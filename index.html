@@ -1,26 +1,43 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Prueba de concepto - Appomodoro</title>
-            <script src="/js/jquery-1.6.1.min.js"></script>
-            <script src="/js/modernizr-2.0.4.js"></script>
-        </head>
-        <body>
-            <h1>Display de 7 segmentos usando canvas!</h1>
-            <canvas width="100" height="180" id="seg0">Miau</canvas>
-            <canvas width="100" height="180" id="seg1">Miau</canvas>
-            <canvas width="60" height="180" id="separador">Miau</canvas>
-            <canvas width="100" height="180" id="seg2">Miau</canvas>
-            <canvas width="100" height="180" id="seg3">Miau</canvas>
-            <div id="botones">
-                <form id="formita" action="#">
-                    <input id="rango" name="r" type="range" min="0" max="9" value="0"/>
-                    <input type="text" id="contador"/>
-                </form>
-            </div>
-        </body>
-        <script type="text/javascript">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>:: Appomodoro ::</title>
+        <script src="/js/jquery-1.6.1.min.js"></script>
+        <script src="/js/modernizr-2.0.4.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="logo">Appomodoro</h1>
+        </header>
+        <canvas width="100" height="180" id="seg0">Miau</canvas>
+        <canvas width="100" height="180" id="seg1">Miau</canvas>
+        <canvas width="60" height="180" id="separador">Miau</canvas>
+        <canvas width="100" height="180" id="seg2">Miau</canvas>
+        <canvas width="100" height="180" id="seg3">Miau</canvas>
+        <section id="botones">
+            <a href="#" id="start">Iniciar Contador</a>
+        </section>
+        <section id="config">
+            <h1>Configuraciones</h1>
+            <ul id="configul">
+                <li>
+                    <label for="largopom">Largo del pomodoro:</label>
+                    <input type="text" id="largopom" name="largopom"/> minutos
+                </li>    
+                <li>
+                    <label for="largopom">Largo del descanso normal:</label>
+                    <input type="text" id="descorto" name="largopom"/> minutos
+                </li>    
+                <li>
+                    <label for="largopom">Largo del descanso largo:</label>
+                    <input type="text" id="deslargo" name="largopom"/> minutos
+                </li>
+            </ul>
+        </section>
+    </body>
+
+    <script type="text/javascript">
         var segpomodoro;
         function dibujasegmento(contexto, color){
             if (color == null){
@@ -43,16 +60,16 @@
             var coloroff = '#FFEEEE';
             //BCD
             var deco = [[1,1,1,1,1,1,0],
-                        [0,1,1,0,0,0,0],
-                        [1,1,0,1,1,0,1],
-                        [1,1,1,1,0,0,1],
-                        [0,1,1,0,0,1,1],
-                        [1,0,1,1,0,1,1],
-                        [1,0,1,1,1,1,1],
-                        [1,1,1,0,0,0,0],
-                        [1,1,1,1,1,1,1],
-                        [1,1,1,0,0,1,1],
-                        [1,1,1,1,1,1,0]];
+                [0,1,1,0,0,0,0],
+                [1,1,0,1,1,0,1],
+                [1,1,1,1,0,0,1],
+                [0,1,1,0,0,1,1],
+                [1,0,1,1,0,1,1],
+                [1,0,1,1,1,1,1],
+                [1,1,1,0,0,0,0],
+                [1,1,1,1,1,1,1],
+                [1,1,1,0,0,1,1],
+                [1,1,1,1,1,1,0]];
             var numero = deco[valor];
             var aidi = 'seg'+donde;
             var canvas = document.getElementById(aidi);
@@ -101,7 +118,6 @@
             dibujasegmento(caco,color);
 
         }
-
         function dospuntos(contexto, color){
             if (color == null){
                 color = '#000'
@@ -111,8 +127,7 @@
             contexto.arc(30,150,15,0,Math.PI*2,true);
             contexto.fillStyle = color;
             contexto.fill();
-        }
-        
+        }     
         function f5reloj(){
             min1 = Math.floor(segpomodoro/600);
             min2 = Math.floor(segpomodoro/60)- min1*10;
@@ -171,5 +186,5 @@
                 alert("Tu navegador no soporta Canvas! D:");
             }
         });
-        </script>
-    </html>
+    </script>
+</html>
