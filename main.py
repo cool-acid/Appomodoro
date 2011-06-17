@@ -8,8 +8,14 @@ class MainPage(webapp.RequestHandler):
     def get(self):
         #por lo mientras solo vamos a mostrar la pagina tal cual. Sin pre-processing.
         path = os.path.join(os.path.dirname(__file__), 'index.html')
-        self.response.out.write(template.render(path, None))
-
+        valores = {
+            'preferencias':{
+                'largopom': 25,
+                'descorto':5,
+                'deslargo':20
+            }
+        }
+        self.response.out.write(template.render(path, valores))
 application = webapp.WSGIApplication([
     ('/', MainPage)
     ], debug=True)
