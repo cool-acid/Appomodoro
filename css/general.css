@@ -277,6 +277,7 @@ h1.logo .tomate{
 #configul li:last-child{
     border-bottom: 0;
 }
+#configul label { display:inline-block; width:55%;margin-right:5px}
 #configul input[type="number"]{
     margin: 0 5px 0 5px;
     background: #333;
