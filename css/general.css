@@ -111,7 +111,7 @@ body{
     background: url('/img/bkg.jpg') repeat;
 }
 #rays{
-    background: url('/img/rayitos.png') repeat;
+    background: url('/img/rayitos.png') no-repeat;
 }
 #container{
     width: 960px;
@@ -222,11 +222,25 @@ h1.logo .tomate{
     font-size: 34px;											  
     padding: 8px 14px 9px; 
 }
+.super.button:active{
+    background-image: none;
+    padding: 9px 14px 8px;
+    box-shadow: inset 2px 1px 10px 2px black;
+}
 .red.button{
     background-color: #b10a0a;
 }
 .red.button:hover{
     background-color: #c11a1a;
+}
+.red.button:active{
+    background-color: #700;
+}
+.green.button{
+    background-color: #275412;
+}
+.green.button:hover{
+    background-color: #376422;
 }
 
 #start{
@@ -235,12 +249,6 @@ h1.logo .tomate{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-#start:active{
-    background-color: #700;
-    background-image: none;
-    padding: 9px 14px 8px;
-    box-shadow: inset 2px 1px 10px 2px black;
 }
 #config{
     width: 496px;
@@ -269,11 +277,11 @@ h1.logo .tomate{
 #configul li:last-child{
     border-bottom: 0;
 }
-#configul input[type="text"]{
+#configul input[type="number"]{
     margin: 0 5px 0 5px;
     background: #333;
     color: #FFF;
-    width: 3em;
+    width: 5em;
     text-align: center;
     border: 0;
     font-family: 'Rock Salt', serif;
@@ -284,7 +292,7 @@ h1.logo .tomate{
     border-radius: 5px; 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
 }
-#configul input[type="text"]:focus{
+#configul input[type="number"]:focus{
     background: #222;
 }
 footer{
