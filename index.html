@@ -66,10 +66,11 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 var minpomodoro = 1;
-                var descorto = 5;
+                var descorto = 1;
                 var deslargo = 20;
+                var wtf = false;
+                
                 var relojito = new pomotimer(minpomodoro,descorto,deslargo);
-                $('#formita').submit(function(){return false;});
                 if (Modernizr.canvas){
                     relojito.inicializar();
                     $('#start').click(function(){
@@ -78,7 +79,31 @@
                     });
                 }else{
                     alert("Tu navegador no soporta Canvas! D:");
+                    //TODO: Manejar esto menos gachamente.
                 }
+                $('#formita').submit(function(){return false;});
+                $('#configul input').change(function(){
+                    id = $(this).attr('id');
+                    $(this).parent();
+                });
+                $('#wtf').click(function(){
+                    if(!wtf){
+                        $('#wtf').animate({width: 500},500,function(){
+                            $('#wtf').animate({height: 200},500,function(){
+//                                $('#wtfexpand').css("text-color", "rgba(255,255,255,0)");
+//                                $('#wtfexpand').show();
+                                $('#wtfexpand').fadeIn('fast');
+                            });
+                        });
+                    }else{
+                        $('#wtfexpand').fadeOut('fast',function(){
+                            $('#wtf').animate({height: 40},500,function(){
+                                $('#wtf').animate({width: 40},500);
+                            });
+                        });
+                    }
+                    wtf = !wtf;
+                });
             });
         </script>
     </body>

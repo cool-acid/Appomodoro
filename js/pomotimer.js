@@ -9,9 +9,38 @@ function pomotimer(pomodoro, corto, largo){
     this.coloron = '#FFF';
     this.coloroff = '#3A3A3A';
     
+    this.colorpomodoro = '#FFF';
+    this.colordescanso = '#0FFF23';
+    
     this.segpomodoro = this.minpomodoro*60;
     this.encendido = false;
     this.espomodoro = true;
+    this.nodescanso = 0;
+    
+    //Cosas del audio
+    channel_max = 10;
+    audiochannels = new Array();
+    for (a=0;a<channel_max;a++){
+        audiochannels[a] = new Array();
+        audiochannels[a]['channel'] = new Audio();
+        audiochannels[a]['finished'] = -1;
+    }
+    this.play_multi_sound = function (s,src) {
+        for (a=0;a<audiochannels.length;a++) {
+            thistime = new Date();
+            if (audiochannels[a]['finished'] < thistime.getTime()) {
+                audiochannels[a]['finished'] = thistime.getTime() + document.getElementById(s).duration*1000;
+                //                audiochannels[a]['channel'].src = document.getElementById(s).src;
+                audiochannels[a]['channel'].src = src;
+                audiochannels[a]['channel'].load();
+                audiochannels[a]['channel'].play();
+                break;
+            }
+        }
+    }
+    
+    
+    
     
     this.dibujaSegmento = function (contexto, color){
         if (color == null){
@@ -121,15 +150,32 @@ function pomotimer(pomodoro, corto, largo){
                 }, 1000);
             }else{
                 if(Modernizr.audio){
-                    alarma = document.getElementById('alarma');
-                    alarma.play();
+                    if(Modernizr.audio.ogg){
+                        this.play_multi_sound('alarma','/sounds/alarm.ogg');
+                    }else if (Modernizr.audio.mp3){
+                        this.play_multi_sound('alarma', '/sounds/alarm.mp3');
+                    }
                 }
-                this.espomodoro = false;
+                if(this.espomodoro){
+                    $('#start').html("Detener descanso");
+                    if(this.nodescanso < 3){
+                        this.nodescanso++;
+                        this.segpomodoro = this.shortrest * 60;
+                    }else{
+                        this.nodescanso=0;
+                        this.segpomodoro = this.longrest * 60;
+                    }
+                    this.coloron = this.colordescanso;
+                    this.f5reloj();
+                    this.dosPuntos('separador');
+                    this.pomodoro();
+                }else{
+                    this.encendido = false;
+                    this.inicializar();
+                }
+                this.espomodoro = !this.espomodoro;
             }
         }
-    }
-    this.descanso = function(){
-            
     }
     this.iniciar = function (){
         this.f5reloj();
@@ -137,20 +183,18 @@ function pomotimer(pomodoro, corto, largo){
             this.encendido = true;
             $('#start').html("Detener Pomodoro");
             $('#start').removeClass('green').addClass('red');
-            if(this.espomodoro == true){
-                this.segpomodoro = this.minpomodoro * 60;
-                this.pomodoro();
-            }else{
-                this.descanso();
-            }
+            this.segpomodoro = this.minpomodoro * 60;
+            this.pomodoro();
         }else{
             this.encendido = false;
+            this.espomodoro = true;
             this.inicializar();
             $('#start').html("Iniciar Pomodoro");
             $('#start').removeClass('red').addClass('green');
         }
     }
     this.inicializar = function (){
+        this.coloron =　this.colorpomodoro;
         this.segpomodoro = this.minpomodoro * 60;
         this.f5reloj();
         this.dosPuntos('separador');
