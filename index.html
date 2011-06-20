@@ -20,7 +20,7 @@
                     <h1 class="logo"><span class="tomate"></span>ap<span class="overlay">p</span><span class="resto">omodoro</span></h1>
                 </header>
                 <section id="wtf">
-                    <h1>Wtf?</h1>
+                    <h1>WTF</h1>
                     <div id="wtfexpand">
                         <p>Appomodoro es un cron&oacute;metro para aplicar la <b>t&eacute;cnica Pomodoro</b>. Si no sabes de que se trata, ve y lee el <a href="http://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro" title="Articulo de la Wikipedia acerca de la t&eacute;cnica pomodoro">art&iacute;culo de wikipedia.</a></p>
                         <p>Desarroll&eacute; appomodoro para practicar en mis skills de HTML5 y de App Engine. Si tienes alg&uacute;n comentario o sugerencia, <a href="mailto:coolacid217@gmail.com">escr&iacute;beme un correo.</a></p>
@@ -57,17 +57,21 @@
                             <input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="{{preferencias.deslargo}}"/>minutos
                         </li>
                     </ul>
+                    <img src="/img/tickx.png" style="display: none"/>
+                    <img src="/img/syncx.png" style="display: none"/>
                 </section>
                 <footer>
-                    <p>Creado por Cool Acid un d&iacute;a que quer&iacute;a aprender HTML5 y no ten&iacute;a nada que hacer en el mes de Junio del 2011</p>
+                    <p>Creado por Cool Acid un d&iacute;a que quer&iacute;a aprender 
+                        <a href="http://es.wikipedia.org/wiki/HTML_5" target="_blank">HTML 5</a>
+                        y <a href="http://code.google.com/appengine/" target="_blank">App Engine</a> y no ten&iacute;a nada que hacer.</p>
                 </footer>
             </div>
         </div>
         <script type="text/javascript">
             $(document).ready(function() {
-                var minpomodoro = 1;
-                var descorto = 1;
-                var deslargo = 20;
+                var minpomodoro = {{preferencias.largopom}};
+                var descorto = {{preferencias.descorto}};
+                var deslargo = {{preferencias.deslargo}};
                 var wtf = false;
                 
                 var relojito = new pomotimer(minpomodoro,descorto,deslargo);
@@ -81,23 +85,45 @@
                     alert("Tu navegador no soporta Canvas! D:");
                     //TODO: Manejar esto menos gachamente.
                 }
+                
                 $('#formita').submit(function(){return false;});
-                $('#configul input').change(function(){
+                $('#configul input').bind("change blur keyup mouseup", function() {
                     id = $(this).attr('id');
-                    $(this).parent();
+                    //                    $(this).parent().append('<img src="/img/syncx.png" class="sync"/>');
+                    var minutos = $(this).val();
+                    var numero = new RegExp("^[0-9]{1,2}$");
+                    if (numero.test(minutos)){
+                        $(this).attr("style","color:#FFF;");
+                        switch(id){
+                            case 'largopom':
+                                relojito.minpomodoro = minutos;
+                                if (!relojito.encendido){
+                                    relojito.inicializar();
+                                }
+                                break;
+                            case 'descorto':
+                                relojito.shortrest = minutos;
+                                break;
+                            case 'deslargo':
+                                relojito.longrest = minutos;
+                                break;
+                        }
+                    }else{
+                        $(this).attr("style","color:#F55;");
+                    }
                 });
                 $('#wtf').click(function(){
                     if(!wtf){
+                        $('#wtf>h1').animate({fontSize: "2em"},500);
                         $('#wtf').animate({width: 500},500,function(){
                             $('#wtf').animate({height: 200},500,function(){
-//                                $('#wtfexpand').css("text-color", "rgba(255,255,255,0)");
-//                                $('#wtfexpand').show();
                                 $('#wtfexpand').fadeIn('fast');
                             });
                         });
                     }else{
                         $('#wtfexpand').fadeOut('fast',function(){
                             $('#wtf').animate({height: 40},500,function(){
+                                $('#wtf>h1').animate({fontSize: ".8em"},500);
                                 $('#wtf').animate({width: 40},500);
                             });
                         });
