@@ -17,6 +17,8 @@ function pomotimer(pomodoro, corto, largo){
     this.espomodoro = true;
     this.nodescanso = 0;
     
+    this.instance;
+    
     //Cosas del audio
     channel_max = 10;
     audiochannels = new Array();
@@ -145,7 +147,7 @@ function pomotimer(pomodoro, corto, largo){
                 
                 //tonto javascript tonto
                 var _this = this;
-                t = setTimeout(function() {
+                this.instance = setTimeout(function() {
                     _this.pomodoro();
                 }, 1000);
             }else{
@@ -180,6 +182,7 @@ function pomotimer(pomodoro, corto, largo){
     this.iniciar = function (){
         this.f5reloj();
         if (this.encendido == false){
+            clearTimeout(this.instance);
             this.encendido = true;
             $('#start').html("Detener Pomodoro");
             $('#start').removeClass('green').addClass('red');
