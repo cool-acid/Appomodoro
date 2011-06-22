@@ -158,6 +158,13 @@ function pomotimer(pomodoro, corto, largo){
                         this.play_multi_sound('alarma', '/sounds/alarm.mp3');
                     }
                 }
+                if(window.webkitNotifications.checkPermission()==0){
+                    var notificacion = window.webkitNotifications.createNotification('/img/tickx.png','Notification Title', 'Notification content...');
+                    notificacion.show();
+                    setTimeout(function(){
+                        notificacion.cancel();
+                    }, '10000');
+                }
                 if(this.espomodoro){
                     $('#start').html("Detener descanso");
                     if(this.nodescanso < 3){
@@ -172,6 +179,8 @@ function pomotimer(pomodoro, corto, largo){
                     this.dosPuntos('separador');
                     this.pomodoro();
                 }else{
+                    $('#start').html("Iniciar Pomodoro");
+                    $('#start').removeClass('red').addClass('green');
                     this.encendido = false;
                     this.inicializar();
                 }
