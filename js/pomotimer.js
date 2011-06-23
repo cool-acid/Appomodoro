@@ -139,6 +139,15 @@ function pomotimer(pomodoro, corto, largo){
         this.dibujaNumero(sec1,'seg2');
         this.dibujaNumero(sec2,'seg3');
     }
+    this.doSimpleNotification = function(img, titulo, body){
+        if(window.webkitNotifications.checkPermission()==0){
+            var notificacion = window.webkitNotifications.createNotification(img, titulo, body);
+            notificacion.show();
+            setTimeout(function(){
+                notificacion.cancel();
+            }, '10000');
+        }
+    }
     this.pomodoro = function(){
         if(this.encendido){
             if(this.segpomodoro > 0){
@@ -158,19 +167,16 @@ function pomotimer(pomodoro, corto, largo){
                         this.play_multi_sound('alarma', '/sounds/alarm.mp3');
                     }
                 }
-                if(window.webkitNotifications.checkPermission()==0){
-                    var notificacion = window.webkitNotifications.createNotification('/img/tickx.png','Notification Title', 'Notification content...');
-                    notificacion.show();
-                    setTimeout(function(){
-                        notificacion.cancel();
-                    }, '10000');
-                }
-                if(this.espomodoro){
+                
+                if(this.espomodoro){                   
                     $('#start').html("Detener descanso");
                     if(this.nodescanso < 3){
+                        numero = (this.shortrest == 1)?'':'s';
+                        this.doSimpleNotification('/img/logo.png','¡Fin del pomodoro!', 'Tómate '+ this.shortrest +' minuto'+ numero +'. Te lo mereces.');
                         this.nodescanso++;
                         this.segpomodoro = this.shortrest * 60;
                     }else{
+                        this.doSimpleNotification('/img/logo.png','¡Fin del pomodoro!', 'Tómate '+ this.shortrest +' minuto'+ numero +'. Te lo mereces.');
                         this.nodescanso=0;
                         this.segpomodoro = this.longrest * 60;
                     }
@@ -179,6 +185,7 @@ function pomotimer(pomodoro, corto, largo){
                     this.dosPuntos('separador');
                     this.pomodoro();
                 }else{
+                    this.doSimpleNotification('/img/logo.png','¡Fin del descanso!', '¿Listo para comenzar un nuevo pomodoro?');
                     $('#start').html("Iniciar Pomodoro");
                     $('#start').removeClass('red').addClass('green');
                     this.encendido = false;
