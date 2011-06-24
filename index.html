@@ -98,6 +98,7 @@
                 var minpomodoro = {{preferencias.largopom}};
                 var descorto = {{preferencias.descorto}};
                 var deslargo = {{preferencias.deslargo}};
+                var click;
                 
                 if (Modernizr.localstorage) {
                     minpomodoro = (localStorage['appomodoro.largopom'])?localStorage['appomodoro.largopom']:minpomodoro;
@@ -177,22 +178,29 @@
                     }
                 });
                 $('#wtf').click(function(){
-                    if(!wtf){
-                        $('#wtf>h1').animate({fontSize: "2em"},500);
-                        $('#wtf').animate({width: 500},500,function(){
-                            $('#wtf').animate({height: 200},500,function(){
-                                $('#wtfexpand').fadeIn('fast');
+                    if(!click){
+                        click = true;
+                        if(!wtf){
+                            $('#wtf>h1').animate({fontSize: "2em"},300);
+                            $('#wtf').animate({width: 500},500,function(){
+                                $('#wtf').animate({height: 200},500,function(){
+                                    $('#wtfexpand').fadeIn('fast',function(){
+                                        click = false;
+                                    });
+                                });
                             });
-                        });
-                    }else{
-                        $('#wtfexpand').fadeOut('fast',function(){
-                            $('#wtf').animate({height: 40},500,function(){
-                                $('#wtf>h1').animate({fontSize: ".8em"},500);
-                                $('#wtf').animate({width: 40},500);
+                        }else{
+                            $('#wtfexpand').fadeOut('fast',function(){
+                                $('#wtf').animate({height: 40},500,function(){
+                                    $('#wtf>h1').animate({fontSize: ".8em"},300);
+                                    $('#wtf').animate({width: 40},500,function(){
+                                        click = false;
+                                    });
+                                });
                             });
-                        });
+                        }
+                        wtf = !wtf;
                     }
-                    wtf = !wtf;
                 });
             });
             
