@@ -6,7 +6,6 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 
 class MainPage(webapp.RequestHandler):
     def get(self):
-        #por lo mientras solo vamos a mostrar la pagina tal cual. Sin pre-processing.
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         valores = {
             'preferencias':{
@@ -15,7 +14,7 @@ class MainPage(webapp.RequestHandler):
                 'deslargo':20
             }
         }
-        self.response.out.write(template.render(path, valores))
+        self.response.out.write(template.render(path, None))
 application = webapp.WSGIApplication([
     ('/', MainPage)
     ], debug=True)

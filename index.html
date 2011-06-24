@@ -66,15 +66,15 @@
                     <ul id="configul">
                         <li>
                             <label for="largopom">Duraci&oacute;n del pomodoro:</label>
-                            <input type="number" min ="1" max ="99" id="largopom" name="largopom" value="{{preferencias.largopom}}"/>minutos
+                            <input type="number" min ="1" max ="99" id="largopom" name="largopom" value="25"/>minutos
                         </li>    
                         <li>
                             <label for="descorto">Duraci&oacute;n del descanso normal:</label>
-                            <input type="number" min ="1" max ="99" id="descorto" name="descorto" value="{{preferencias.descorto}}"/>minutos
+                            <input type="number" min ="1" max ="99" id="descorto" name="descorto" value="5"/>minutos
                         </li>    
                         <li>
                             <label for="deslargo">Duraci&oacute;n del descanso largo:</label>
-                            <input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="{{preferencias.deslargo}}"/>minutos
+                            <input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="20"/>minutos
                         </li>
                     </ul>
                 </section>
@@ -88,125 +88,12 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
         <script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
         <!--[if lt IE 7 ]>
-	<script src="js/dd_belatedpng.js"></script>
-	<script> DD_belatedPNG.fix('img, .png_bg');</script>
-	<![endif]-->
+        <script src="js/dd_belatedpng.js"></script>
+        <script> DD_belatedPNG.fix('img, .png_bg');</script>
+        <![endif]-->
         <script src="/js/pomotimer.js"></script>
+        <!--ANALYTICS-->
         <script>
-            $(document).ready(function() {
-                
-                var minpomodoro = {{preferencias.largopom}};
-                var descorto = {{preferencias.descorto}};
-                var deslargo = {{preferencias.deslargo}};
-                var click;
-                
-                if (Modernizr.localstorage) {
-                    minpomodoro = (localStorage['appomodoro.largopom'])?localStorage['appomodoro.largopom']:minpomodoro;
-                    descorto = (localStorage['appomodoro.shortrest'])?localStorage['appomodoro.shortrest']:descorto;
-                    deslargo = (localStorage['appomodoro.longrest'])?localStorage['appomodoro.longrest']:deslargo;
-                    
-                    $('#largopom').val(minpomodoro);
-                    $('#descorto').val(descorto);
-                    $('#deslargo').val(deslargo);
-                }
-                
-                var wtf = false;
-                var relojito = new pomotimer(minpomodoro,descorto,deslargo);
-                
-                //checamos por soporte de canvas
-                if (Modernizr.canvas){
-                    relojito.inicializar();
-                    $('#start').click(function(){
-                        relojito.iniciar();
-                        return false;
-                    });
-                }else{
-                    alert("Tu navegador no soporta Canvas! D:");
-                    //TODO: Manejar esto menos gachamente.
-                }
-                //checamos por soporte de notifications
-                if (window.webkitNotifications) {
-                    $('#allowNotifications').live('click',function(){
-                        window.webkitNotifications.requestPermission(function(){
-                            $('#notifications').html("Notificaciones de escritorio activadas.");
-                        });
-                        return false;
-                    });
-                    //                    $('#denyNotifications').live('click',function(){
-                    //Aqui ira como quitar el permiso cuando sepa si hay una funcion que lo haga o siquiera si es posible
-                    //                    });
-
-                    if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
-                        $('#configul').prepend("<li id='notifications'>Notificaciones de escritorio activadas.</li>");
-                    } else {
-                        $('#configul').prepend("<li id='notifications'><a href='#' id='allowNotifications'>Activar notificaciones de escritorio</a></li>");
-                    }
-                }
-                
-                $('#formita').submit(function(){return false;});
-                $('#configul input').bind("change blur keyup mouseup", function() {
-                    id = $(this).attr('id');
-                    var minutos = $(this).val();
-                    var numero = new RegExp("^[0-9]{1,2}$");
-                    if (numero.test(minutos)){
-                        $(this).attr("style","color:#FFF;");
-                        switch(id){
-                            case 'largopom':
-                                if (Modernizr.localstorage) {
-                                    localStorage['appomodoro.largopom'] = minutos;
-                                }
-                                relojito.minpomodoro = minutos;
-                                if (!relojito.encendido){
-                                    relojito.inicializar();
-                                }
-                                break;
-                            case 'descorto':
-                                if (Modernizr.localstorage) {
-                                    localStorage['appomodoro.shortrest'] = minutos;
-                                }
-                                relojito.shortrest = minutos;
-                                break;
-                            case 'deslargo':
-                                if (Modernizr.localstorage) {
-                                    localStorage['appomodoro.longrest'] = minutos;
-                                }
-                                relojito.longrest = minutos;
-                                break;
-                        }
-                    }else{
-                        $(this).attr("style","color:#F55;");
-                    }
-                });
-                $('#wtf').click(function(){
-                    if(!click){
-                        click = true;
-                        if(!wtf){
-                            $('#wtf>h1').animate({fontSize: "2em"},300);
-                            $('#wtf').animate({width: 500},500,function(){
-                                $('#wtf').animate({height: 200},500,function(){
-                                    $('#wtfexpand').fadeIn('fast',function(){
-                                        click = false;
-                                    });
-                                });
-                            });
-                        }else{
-                            $('#wtfexpand').fadeOut('fast',function(){
-                                $('#wtf').animate({height: 40},500,function(){
-                                    $('#wtf>h1').animate({fontSize: ".8em"},300);
-                                    $('#wtf').animate({width: 40},500,function(){
-                                        click = false;
-                                    });
-                                });
-                            });
-                        }
-                        wtf = !wtf;
-                    }
-                });
-            });
-            
-            
-            
-            
             var _gaq=[['_setAccount','UA-24156028-1'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
                 g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
