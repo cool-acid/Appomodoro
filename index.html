@@ -1,17 +1,27 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="es" class="no-js canvas"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
         <title>appomodoro</title>
-        <script src="/js/jquery-1.6.1.min.js"></script>
-        <script src="/js/modernizr-2.0.4.js"></script>
-        <script src="/js/pomotimer.js"></script>
+        <meta name="description" content="Un contador para pomodoro hecho en html 5 y canvas.">
+        <meta name="author" content="Cool Acid">
 
-        <link rel="stylesheet" href="/css/general.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--   GOOGLE WEB FONTS     -->
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="stylesheet" href="css/style.css?v=2">
+        <!--Google web fonts-->
         <link  href="http://fonts.googleapis.com/css?family=Cherry+Cream+Soda:regular&v1" rel="stylesheet">
         <link  href="http://fonts.googleapis.com/css?family=Rock+Salt:regular&v1" rel="stylesheet">
+
+        <script src="/js/modernizr-2.0.4.js"></script>
     </head>
     <body>
         <div id="rays">
@@ -19,6 +29,9 @@
                 <header>
                     <h1 class="logo"><span class="tomate"></span>ap<span class="overlay">p</span><span class="resto">omodoro</span></h1>
                 </header>
+                <section id="noHayJS">
+                    <h1>Necesitas tener Javascript activado para usar esta página.</h1>
+                </section>
                 <section id="wtf">
                     <h1>WTF</h1>
                     <div id="wtfexpand">
@@ -27,21 +40,21 @@
                         <p>¡Que disfrutes appomodoro!</p>
                     </div>
                 </section>
-                <section id="reloj">
+                <section id="reloj" class="quieroJS">
                     <canvas width="100" height="180" id="seg0">Miau</canvas>
                     <canvas width="100" height="180" id="seg1">Miau</canvas>
                     <canvas width="60" height="180" id="separador">Miau</canvas>
                     <canvas width="100" height="180" id="seg2">Miau</canvas>
                     <canvas width="100" height="180" id="seg3">Miau</canvas>
                 </section>
-                <section id="botones">
+                <section id="botones" class="quieroJS">
                     <a href="#" id="start" class="green button super">Iniciar Pomodoro</a>
                     <audio id="alarma" preload="auto">
                         <source src="/sounds/alarm.ogg" type="audio/ogg" />
                         <source src="/sounds/alarm.mp3" type="audio/mpeg" />
                     </audio>
                 </section>
-                <section id="config">
+                <section id="config" class="quieroJS">
                     <h1>Configuraciones:</h1>
                     <ul id="configul">
                         <li>
@@ -65,13 +78,19 @@
                 </footer>
             </div>
         </div>
-        <script type="text/javascript">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+        <script>!window.jQuery && document.write(unescape('%3Cscript src="js/jquery-1.6.1.min.js"%3E%3C/script%3E'))</script>
+        <!--[if lt IE 7 ]>
+	<script src="js/dd_belatedpng.js"></script>
+	<script> DD_belatedPNG.fix('img, .png_bg');</script>
+	<![endif]-->
+        <script src="/js/pomotimer.js"></script>
+        <script>
             $(document).ready(function() {
                 var minpomodoro = {{preferencias.largopom}};
                 var descorto = {{preferencias.descorto}};
                 var deslargo = {{preferencias.deslargo}};
                 var wtf = false;
-                
                 var relojito = new pomotimer(minpomodoro,descorto,deslargo);
                 
                 //checamos por soporte de canvas
@@ -93,9 +112,9 @@
                         });
                         return false;
                     });
-//                    $('#denyNotifications').live('click',function(){
-                        //Aqui ira como quitar el permiso cuando sepa si hay una funcion que lo haga o siquiera si es posible
-//                    });
+                    //                    $('#denyNotifications').live('click',function(){
+                    //Aqui ira como quitar el permiso cuando sepa si hay una funcion que lo haga o siquiera si es posible
+                    //                    });
 
                     if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
                         $('#configul').prepend("<li id='notifications'>Notificaciones de escritorio activadas.</li>");
@@ -148,6 +167,14 @@
                     wtf = !wtf;
                 });
             });
+            
+            
+            
+            
+            var _gaq=[['_setAccount','UA-24156028-1'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
     </body>
 </html>
