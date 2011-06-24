@@ -3,7 +3,7 @@
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="es" class="no-js canvas"> <!--<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="es" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -54,6 +54,13 @@
                         <source src="/sounds/alarm.mp3" type="audio/mpeg" />
                     </audio>
                 </section>
+                <section id="soporte" class="quieroJS">
+                    <ul>
+                        <li class="supcanvas">Tu navegador no soporta <b>canvas</b>. No puedes usar este sitio.</li>
+                        <li class="supaudio">Tu navegador no soporta <b>audio</b>. No podr&aacute;s oir la alarma.</li>
+                        <li class="suplocalstorage">Tu navegador no soporta <b>Local Storage</b>. No podr&aacute;s guardar los cambios en las configuraciones para tu pr&oacute;xima visita.</li>
+                    </ul>
+                </section>
                 <section id="config" class="quieroJS">
                     <h1>Configuraciones:</h1>
                     <ul id="configul">
@@ -87,9 +94,21 @@
         <script src="/js/pomotimer.js"></script>
         <script>
             $(document).ready(function() {
+                
                 var minpomodoro = {{preferencias.largopom}};
                 var descorto = {{preferencias.descorto}};
                 var deslargo = {{preferencias.deslargo}};
+                
+                if (Modernizr.localstorage) {
+                    minpomodoro = (localStorage['appomodoro.largopom'])?localStorage['appomodoro.largopom']:minpomodoro;
+                    descorto = (localStorage['appomodoro.shortrest'])?localStorage['appomodoro.shortrest']:descorto;
+                    deslargo = (localStorage['appomodoro.longrest'])?localStorage['appomodoro.longrest']:deslargo;
+                    
+                    $('#largopom').val(minpomodoro);
+                    $('#descorto').val(descorto);
+                    $('#deslargo').val(deslargo);
+                }
+                
                 var wtf = false;
                 var relojito = new pomotimer(minpomodoro,descorto,deslargo);
                 
@@ -132,15 +151,24 @@
                         $(this).attr("style","color:#FFF;");
                         switch(id){
                             case 'largopom':
+                                if (Modernizr.localstorage) {
+                                    localStorage['appomodoro.largopom'] = minutos;
+                                }
                                 relojito.minpomodoro = minutos;
                                 if (!relojito.encendido){
                                     relojito.inicializar();
                                 }
                                 break;
                             case 'descorto':
+                                if (Modernizr.localstorage) {
+                                    localStorage['appomodoro.shortrest'] = minutos;
+                                }
                                 relojito.shortrest = minutos;
                                 break;
                             case 'deslargo':
+                                if (Modernizr.localstorage) {
+                                    localStorage['appomodoro.longrest'] = minutos;
+                                }
                                 relojito.longrest = minutos;
                                 break;
                         }

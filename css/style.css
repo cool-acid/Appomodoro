@@ -378,7 +378,7 @@ footer a:hover{
     text-align: center;
     margin-top: 10px;
 }
-html.no-js .quieroJS{
+html.no-js .quieroJS, html.no-canvas .quieroJS{
     display:none;
 }
 html.no-js #wtf{
@@ -393,4 +393,44 @@ html.no-js #wtf h1{
 }
 html.js #noHayJS{
     display:none;
+}
+
+#soporte{
+    font-size: .8em;
+    width:500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #333;
+    background: #b10a0a;
+    color: #FFF;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 10px; 
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+#soporte ul{
+    list-style-type: square;
+    padding: 0;
+    margin-left: 1em;
+}
+#soporte li{
+    margin-top: 5px;
+}
+#soporte b{
+    font-weight: bold;
+    color:#EEE;
+}
+html.canvas #soporte li.supcanvas{
+    display: none;
+}
+html.audio #soporte li.supaudio{
+    display: none;
+}
+html.localstorage #soporte li.suplocalstorage{
+    display: none;
+}
+html.canvas.audio.localstorage #soporte{
+    display: none;
 }
