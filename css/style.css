@@ -96,7 +96,7 @@ body{
 #rays{
     background: url('/img/rayitos.png') no-repeat;
 }
-#container{
+#viewport{
     width: 960px;
     margin-left: auto;
     margin-right: auto;

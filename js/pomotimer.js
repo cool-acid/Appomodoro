@@ -142,12 +142,14 @@ function pomotimer(pomodoro, corto, largo){
     }
     
     this.doSimpleNotification = function(img, titulo, body){
-        if(window.webkitNotifications.checkPermission()==0){
-            var notificacion = window.webkitNotifications.createNotification(img, titulo, body);
-            notificacion.show();
-            setTimeout(function(){
-                notificacion.cancel();
-            }, '10000');
+        if (window.webkitNotifications) {
+            if(window.webkitNotifications.checkPermission()==0){
+                var notificacion = window.webkitNotifications.createNotification(img, titulo, body);
+                notificacion.show();
+                setTimeout(function(){
+                    notificacion.cancel();
+                }, '10000');
+            }
         }
     }
     
