@@ -16,7 +16,7 @@ handlers:
 - url: /sounds
   static_dir: sounds
 - url: /amimobile
-  script: mobile.py
+  script: amimobile.py
 - url: /.*
   script: main.py
 
