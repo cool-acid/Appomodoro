@@ -20,12 +20,15 @@ function pomotimer(pomodoro, corto, largo){
     this.instance;
     
     //Cosas del audio
-    channel_max = 10;
-    audiochannels = new Array();
-    for (a=0;a<channel_max;a++){
-        audiochannels[a] = new Array();
-        audiochannels[a]['channel'] = new Audio();
-        audiochannels[a]['finished'] = -1;
+    if(Modernizr.audio){
+        channel_max = 10;
+        audiochannels = new Array();
+
+        for (a=0;a<channel_max;a++){
+            audiochannels[a] = new Array();
+            audiochannels[a]['channel'] = new Audio();
+            audiochannels[a]['finished'] = -1;
+        }
     }
     
     this.play_multi_sound = function (s,src) {
