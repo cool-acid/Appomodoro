@@ -18,7 +18,6 @@
             </object>
             <div id="botones">
                 <a href="#" id="jugar">PLAY</a>
-                <a href="#" id="flash">PLAY FLASH</a>
             </div>
         </section>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -54,9 +53,17 @@
                 
                 if(Modernizr.audio)
                 {
-                    $('body').append("<h1>Hay audio</h1>");
+                    if(Modernizr.audio.ogg){
+                        $('body').append("<h1>Hay audio con ogg</h1>");
+                    }else if (Modernizr.audio.mp3){
+                        $('body').append("<h1>Hay audio con mp3</h1>");
+                    }else{
+                        //cargar flash y funciones
+                        $('body').append("<h1>No soporta ogg ni mp3. Cayendo a flash.</h1>");
+                    }
                 }else{
-                    $('body').append("<h1>No hay audio. ):</h1>");
+                    //cargar funciones
+                    $('body').append("<h1>No hay elemento audio. ): Cayendo a flash.</h1>");
                 }
                 
                 var myListener = new Object();
