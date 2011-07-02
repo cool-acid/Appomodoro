@@ -11,6 +11,7 @@ class MainPage(webapp.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         pathmovil = os.path.join(os.path.dirname(__file__), 'mindex.html')
+        
         valores = {
             'preferencias':{
                 'largopom':25,
@@ -23,19 +24,21 @@ class MainPage(webapp.RequestHandler):
             b = reg_b.search(user_agent)
             v = reg_v.search(user_agent[0:4])
             if b or v:
-                self.response.headers['Content-Type'] = 'text/html'
-                self.response.out.write("<h1>Soy mobil!</h1>")
+#                self.response.headers['Content-Type'] = 'text/html'
+#                self.response.out.write("<h1>Soy mobil!</h1>")
+                self.response.out.write(template.render(pathmovil, None))    
             else:
                 self.response.out.write(template.render(path, None))
                 
 class Prueba(webapp.RequestHandler):
     def get(self):
-        path = os.path.join(os.path.dirname(__file__), 'pruebaaudio.html')
+        path = os.path.join(os.path.dirname(__file__), 'mindex.html')
+#        path = os.path.join(os.path.dirname(__file__), 'pruebaaudio.html')
         self.response.out.write(template.render(path, None))
             
 application = webapp.WSGIApplication([
     ('/', MainPage),
-    ('/prueba', Prueba)
+    ('/movil.html', Prueba)
     ], debug=True)
 
 def main():

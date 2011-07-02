@@ -132,12 +132,18 @@ function pomotimer(pomodoro, corto, largo){
         contexto.fill();
     }
     
-    this.f5reloj = function (){   
+    this.f5reloj = function (){
+        var pomoodescanso = '';
         min1 = Math.floor(this.segpomodoro/600);
         min2 = Math.floor(this.segpomodoro/60)- min1*10;          
         sec1 = Math.floor((this.segpomodoro%60)/10);
         sec2 = this.segpomodoro%60 - sec1*10;
-        document.title = " " + min1 + min2 + ":" + sec1 + sec2 + " - appomodoro"
+        if(this.encendido){
+            pomoodescanso = (this.espomodoro)?' (Pomodoro)':' (Descanso)';
+            document.title = " " + min1 + min2 + ":" + sec1 + sec2 + pomoodescanso + " - appomodoro";
+        }else{
+            document.title = "appomodoro";
+        }
         this.dibujaNumero(min1,'seg0');
         this.dibujaNumero(min2,'seg1');
         this.dibujaNumero(sec1,'seg2');
@@ -168,13 +174,7 @@ function pomotimer(pomodoro, corto, largo){
                     _this.pomodoro();
                 }, 1000);
             }else{
-                if(Modernizr.audio){
-                    if(Modernizr.audio.ogg){
-                        this.play_multi_sound('alarma','/sounds/alarm.ogg');
-                    }else if (Modernizr.audio.mp3){
-                        this.play_multi_sound('alarma', '/sounds/alarm.mp3');
-                    }
-                }
+                this.sonaralarma();
                 
                 if(this.espomodoro){                   
                     $('#start').html("Detener descanso");
@@ -221,6 +221,21 @@ function pomotimer(pomodoro, corto, largo){
             $('#start').removeClass('red').addClass('green');
         }
     }
+    this.sonaralarma = function(){
+        if(Modernizr.audio){
+            if(Modernizr.audio.ogg){
+                console.log("Alarma (ogg)");
+                this.play_multi_sound('alarma','/sounds/alarm.ogg');
+            }else if (Modernizr.audio.mp3){
+                console.log("Alarma (mp3)");
+                this.play_multi_sound('alarma', '/sounds/alarm.mp3');
+            }else{
+                play();
+            }
+        }else{
+            play();
+        }
+    }
     
     this.inicializar = function (){
         this.coloron =　this.colorpomodoro;
@@ -232,7 +247,6 @@ function pomotimer(pomodoro, corto, largo){
 
 
 $(document).ready(function() {
-                
     var minpomodoro = 25;
     var descorto = 5;
     var deslargo = 20;
@@ -246,6 +260,13 @@ $(document).ready(function() {
         $('#largopom').val(minpomodoro);
         $('#descorto').val(descorto);
         $('#deslargo').val(deslargo);
+    }
+    if(Modernizr.audio){
+        if(!Modernizr.audio.ogg&&!Modernizr.audio.mp3){
+            $('#soporte').show(function(){
+                $('#soporte>ul').append('<li>Tu navegador no soporta <b>mp3</b> ni <b>ogg</b>. Usar&eacute; flash para la alarma.</li>');
+            });
+        }
     }
                 
     var wtf = false;
