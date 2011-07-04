@@ -38,7 +38,7 @@ class Prueba(webapp.RequestHandler):
             
 application = webapp.WSGIApplication([
     ('/', MainPage),
-    ('/movil', Prueba)
+    ('/mobile', Prueba)
     ], debug=True)
 
 def main():
