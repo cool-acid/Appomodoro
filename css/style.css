@@ -12,17 +12,17 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
 }
 
 blockquote, q { quotes: none; }
@@ -139,12 +139,12 @@ h1.logo .tomate{
     border-radius: 30px; 
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
     cursor: pointer;
-    
+
     box-shadow: inset 0 0 10px 1px #000;
-/*    border-top: 1px solid #000;
-    border-left: 1px solid #000;
-    border-right: 1px solid #EEE;
-    border-bottom: 1px solid #EEE;*/
+    /*    border-top: 1px solid #000;
+        border-left: 1px solid #000;
+        border-right: 1px solid #EEE;
+        border-bottom: 1px solid #EEE;*/
 }
 #wtf:hover{
     color: #FFF;
@@ -163,14 +163,14 @@ h1.logo .tomate{
 }
 #wtfexpand a:link, #wtfexpand a:visited{
     color: #FFF;
-/*    text-decoration: none;*/
+    /*    text-decoration: none;*/
     font-weight: bold;
-/*    border-bottom: 1px solid #FFF;*/
+    /*    border-bottom: 1px solid #FFF;*/
 }
 #wtfexpand a:hover{
     text-shadow: 1px 1px 6px #DDD; 
 }
-    
+
 #reloj{
     padding: 10px;
     background-color: #333;
@@ -179,36 +179,35 @@ h1.logo .tomate{
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    -moz-border-radius: 10px; 
-    -webkit-border-radius: 10px; 
-    border-radius: 10px; 
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
     box-shadow: inset 0 0 10px 1px #000;
-    border-top: 1px solid #333;
-    border-left: 1px solid #333;
-    border-right: 1px solid #EEE;
-    border-bottom: 1px solid #EEE;
 }
 .no-canvas #reloj{
     display: none;
 }
 .button, .button:visited {
-	background: #222 url('/img/overlay.png') repeat-x;
-	display: inline-block;
-	padding: 5px 10px 6px;
-	color: #fff;
-	text-decoration: none;
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
-	border-radius: 6px;
-	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
-	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
-	box-shadow: 0 1px 3px rgba(0,0,0,0.6);
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-	border-bottom: 1px solid rgba(0,0,0,0.25);
-	position: relative;
-	cursor: pointer;
-        font-weight: bold;
+    background: #222 url('/img/overlay.png') repeat-x;
+    display: inline-block;
+    padding: 5px 10px 6px;
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
 }
 .button:hover{ 
     background-color: #111; 
@@ -252,6 +251,16 @@ h1.logo .tomate{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    -webkit-border-radius: 0;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius: 0;
+    -moz-border-radius-bottomright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-radius: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding:5px 10px 6px 10px;
 }
 #config{
     width: 496px;
@@ -381,7 +390,7 @@ footer a:hover{
     margin-top: 10px;
 }
 html.no-js .quieroJS, html.no-canvas .quieroJS{
-    display:none;
+    display:none !important;
 }
 html.no-js #wtf{
     width:500px;

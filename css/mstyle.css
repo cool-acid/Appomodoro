@@ -8,14 +8,14 @@
  * - yui.yahooapis.com/2.8.1/build/base/base.css
  * - camendesign.com/design/
  * - praegnanz.de/weblog/htmlcssjs-kickstart
- */
+*/
 
 
 /**
  * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
  * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
  * html5doctor.com/html-5-reset-stylesheet/
- */
+*/
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -26,17 +26,17 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
 }
 
 blockquote, q { quotes: none; }
@@ -62,7 +62,7 @@ input, select { vertical-align: middle; }
 
 /**
  * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
- */
+*/
 
 
 body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
@@ -75,7 +75,7 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
 
 /**
  * Minimal base styles.
- */
+*/
 
 /* Prevent mobile zooming while remain desktop zooming: github.com/shichuan/mobile-html5-boilerplate/issues/closed#issue/14 */
 html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; } 
@@ -100,9 +100,9 @@ sup { top: -0.5em; }
 sub { bottom: -0.25em; }
 
 pre {
-  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
-  white-space: pre; white-space: pre-wrap; word-wrap: break-word;
-  padding: 15px;
+    /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/ */
+    white-space: pre; white-space: pre-wrap; word-wrap: break-word;
+    padding: 15px;
 }
 
 textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
@@ -123,7 +123,7 @@ button, input, select, textarea { margin: 0; }
 /* Colors for form validity */
 input:valid, textarea:valid   {  }
 input:invalid, textarea:invalid {
-   border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red;
+    border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red;
 }
 .no-boxshadow input:invalid, .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
@@ -148,13 +148,13 @@ button {  width: auto; overflow: visible; }
 
 /**
  * You might tweak these..
- */
+*/
 
 body, select, input, textarea {
-  /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
-  color: #444;
-  /* Set your base font here, to apply evenly */
-  /* font-family: Georgia, serif;  */
+    /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */
+    color: #444;
+    /* Set your base font here, to apply evenly */
+    /* font-family: Georgia, serif;  */
 }
 
 /* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
@@ -166,16 +166,16 @@ a:hover { color: #036; }
 
 /* 
  * Helper classes 
- */
- 
+*/
+
 /* prevent callout */
 .nocallout {-webkit-touch-callout: none;}
 
 /* Text overflow with ellipsis */
 .ellipsis {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 /* A hack for HTML5 contenteditable attribute on mobile */
@@ -213,17 +213,242 @@ textarea.contenteditable {-webkit-appearance: none;}
    Author:
 */
 
+body{
+    color: #333;
+    background: #FFF;
+    font-family: tahoma,verdana,arial,sans-serif;
+    font-size: 100%;
+}
+header{
+    background-color: #f5f5f5;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#f5f5f5)); 
+    background-image: -webkit-linear-gradient(top, #fefefe, #f5f5f5); 
+    background-image:    -moz-linear-gradient(top, #fefefe, #f5f5f5); 
+    background-image:     -ms-linear-gradient(top, #fefefe, #f5f5f5); 
+    background-image:      -o-linear-gradient(top, #fefefe, #f5f5f5); 
+    background-image:         linear-gradient(top, #fefefe, #f5f5f5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#f5f5f5'); 
+    height: 73px;
+    padding: 2px;
+    border-bottom: 1px solid #AAA;
+    overflow: hidden;
+}
+h1.logo{
+    /*    display: block;*/
+    font-family: 'Cherry Cream Soda', serif;
+    font-size: 2em;
+    text-align: left;
+    line-height: 73px;
+    color: #173680;
+}
+h1.logo .overlay{
+    color: #275412;
+}
+h1.logo .resto{
+    color: #b10a0a;
+}
+h1.logo .tomate{
+    display: block;
+    width: 80px;
+    height: 73px;
+    background: url('/img/logo_movil.png') no-repeat top center;
+    float: left;
+}
+#reloj
+{
+    padding:10px 0 10px 0;
+    background-color: #333;
+    width: 100%;
+    text-align: center;
+    /*    margin-top: 20px;*/
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: inset 0 0 10px 1px #000;
+}
+.button, .button:visited {
+    background: #222 url('/img/overlay.png') repeat-x;
+    display: inline-block;
+    padding: 5px 10px 6px;
+    color: #fff;
+    text-decoration: none;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+}
+.button:hover{ 
+    background-color: #111; 
+    color: #fff; 
+}
+.large.button, .large.button:visited{ 
+    font-size: 14px;
+    padding: 8px 14px 9px; 
+}
+.super.button, .super.button:visited{
+    font-size: 34px;											  
+    padding: 8px 14px 9px; 
+}
+.super.button:active{
+    background-image: none;
+    padding: 9px 14px 8px;
+    box-shadow: inset 2px 1px 10px 2px black;
+}
+.red.button{
+    background-color: #b10a0a;
+}
+.red.button:hover{
+    background-color: #c11a1a;
+}
+.red.button:active{
+    background-color: #700;
+}
+.green.button{
+    background-color: #275412;
+}
+.green.button:hover{
+    background-color: #376422;
+}
+.grey.button{
+    background-color: #888;
+}
+.grey.button:hover{
+    background-color: #888;
+}
+#start{
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 1.5em;
+}
+#links{
+    margin-top: 3em;
+}
+#links li{
+    float: left;
+    width: 50%;
+    display: block;
+}
+#links li a{
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    display: block;
+}
+.grid span{
+    display: block;
+    height: 60px;
+    width: 60px;
+    margin: 0 auto;
+    background: url('/img/sprite.png') no-repeat;
+    overflow: hidden;
+}
+a.grid{
+    color: #004892;
+    text-decoration: none;
+    font-weight: bold;
+}
+#config span{
+    background-position: 0px -70px;
+}
+
+
+
+.no-canvas #reloj{
+    display: none;
+}
+#noHayJS{
+    text-align: center;
+    margin-top: 10px;
+}
+html.no-js .quieroJS, html.no-canvas .quieroJS{
+    display:none;
+}
+html.js #noHayJS{
+    display:none;
+}
+html.no-canvas #links #config{
+    display:none !important;
+}
+html.no-canvas #links li{
+    width: 100%;
+}
+#audio{
+    display: none;
+}
+#soporte{
+    font-size: .8em;
+    width:100%;
+    padding: 10px 0;
+    background: #b10a0a;
+    color: #FFF;
+}
+#soporte ul{
+    list-style-type: none;
+    padding: 0;
+    margin-left: 1em;
+}
+#soporte li{
+    margin-top: 5px;
+}
+#soporte b{
+    font-weight: bold;
+    color:#EEE;
+}
+html.canvas #soporte li.supcanvas{
+    display: none;
+}
+html.audio #soporte li.supaudio{
+    display: none;
+}
+html.localstorage #soporte li.suplocalstorage{
+    display: none;
+}
+html.canvas.audio.localstorage #soporte{
+    display: none;
+}
 
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-boilerplate/wiki/The-Style
- */
-
-
+*/
 /* Styles for desktop and large screen ----------- */
-
 /*styles for 800px and up!*/
 @media only screen and (min-width: 800px) {
-  /* Styles */
+    #reloj{
+        padding: 10px;
+        background-color: #333;
+        width: 500px;
+        text-align: center;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        -webkit-border-top-left-radius: 10px;
+        -webkit-border-top-right-radius: 10px;
+        -moz-border-radius-topleft: 10px;
+        -moz-border-radius-topright: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+        box-shadow: inset 0 0 10px 1px #000;
+    }
+    #start{
+        width:500px;
+        -webkit-border-bottom-right-radius: 10px;
+        -webkit-border-bottom-left-radius: 10px;
+        -moz-border-radius-bottomright: 10px;
+        -moz-border-radius-bottomleft: 10px;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        padding: 5px 10px 6px;
+        font-size:2em;
+    }
 }/*/mediaquery*/
 
 
@@ -232,5 +457,5 @@ textarea.contenteditable {-webkit-appearance: none;}
 only screen and (-webkit-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
-  /* Styles */
+    /* Styles */
 }

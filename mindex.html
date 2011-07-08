@@ -1,95 +1,131 @@
-﻿<!doctype html>
+<!doctype html>
 <!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
 <!-- Appcache Facts http://appcachefacts.info/ -->
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" manifest="default.appcache?v=1"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" manifest="default.appcache?v=1"> <!--<![endif]-->
 
-<head>
-  <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-  <title></title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
-  <!-- For iPhone 4 with high-resolution Retina display: -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
-  <!-- For first-generation iPad: -->
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
-  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
-  <!-- For nokia devices: -->
-  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
-  
-  <!--iOS web app, deletable if not needed -->
-  <!--<meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="apple-touch-startup-image" href="img/l/splash.png">-->
-  
-  <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
-  <meta http-equiv="cleartype" content="on">
-	
-	<!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
-  
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/mstyle.css?v=1">
- 
-  <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
-  <script src="js/libs/modernizr-custom.js"></script>
-</head>
+        <title></title>
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-<body>
+        <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 
-  <div id="container">
-    <header>
+        <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+        <!-- For iPhone 4 with high-resolution Retina display: -->
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+        <!-- For first-generation iPad: -->
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+        <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+        <link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+        <!-- For nokia devices: -->
+        <link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
 
-    </header>
-    <div id="main" role="main">
-      
-    </div>
+        <!--iOS web app, deletable if not needed -->
+        <!--<meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-startup-image" href="img/l/splash.png">-->
+
+        <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+        <meta http-equiv="cleartype" content="on">
+
+        <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
+
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="/css/mstyle.css?v=1">
+        <!-- Google Web Fonts -->
+        <link  href="http://fonts.googleapis.com/css?family=Cherry+Cream+Soda:regular&v1" rel="stylesheet">
+
+        <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+        <script src="/js/libs/modernizr-custom.js"></script>
+    </head>
+
+    <body>
+
+        <div id="container">
+            <header>
+                <h1 class="logo"><span class="tomate"></span>ap<span class="overlay">p</span><span class="resto">omodoro</span></h1>
+            </header>
+            <div id="main" role="main">
+                <section id="noHayJS">
+                    <h1>Necesitas tener Javascript activado para usar esta página.</h1>
+                </section>
+                <section id="reloj" class="quieroJS">
+                    <canvas width="100" height="180" id="seg0">Miau</canvas>
+                    <canvas width="100" height="180" id="seg1">Miau</canvas>
+                    <canvas width="60" height="180" id="separador">Miau</canvas>
+                    <canvas width="100" height="180" id="seg2">Miau</canvas>
+                    <canvas width="100" height="180" id="seg3">Miau</canvas>
+                </section>
+                <section id="botones" class="quieroJS">
+                    <a href="#" id="start" class="green button super">Iniciar Pomodoro</a>
+                </section>
+                <section id="audio">
+                    <audio id="alarma" preload="auto">
+                        <source src="/sounds/alarm.ogg" type="audio/ogg" />
+                        <source src="/sounds/alarm.mp3" type="audio/mpeg" />
+                    </audio>
+                    <object class="playerpreview" id="flashAudio" type="application/x-shockwave-flash" data="/flash/player.swf" width="1" height="1"> 
+                        <param name="movie" value="/flash/player.swf" /> 
+                        <param name="AllowScriptAccess" value="always" /> 
+                        <param name="FlashVars" value="listener=myListener&amp;interval=500&amp;mp3=/sounds/alarm.mp3" /> 
+                    </object>
+                </section>
+                <section id="soporte">
+                    <ul>
+                        <li class="supcanvas">Tu navegador no soporta <b>canvas</b>. No puedes usar este sitio.</li>
+                        <li class="supaudio">Tu navegador no soporta <b>audio</b>. Usar&eacute; flash para la alarma.</li>
+                        <li class="suplocalstorage">Tu navegador no soporta <b>Local Storage</b>. No podr&aacute;s guardar los cambios en las configuraciones para tu pr&oacute;xima visita.</li>
+                    </ul>
+                </section>
+                <nav id="links">
+                    <ul>
+                        <li class="quieroJS"><a href="#" class="grid" id="config"><span></span>Configuraci&oacute;n</a></li>
+                        <li><a href="#" class="grid" id="about"><span></span>Acerca de</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div> <!--! end of #container -->
+
+
+        <!-- JavaScript at the bottom for fast page loading -->
+
+        <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+        <script>window.jQuery || document.write("<script src='/js/jquery-1.6.1.min.js'>\x3C/script>")</script>
+
+        <!-- scripts concatenated and minified via ant build script -->
+        <script src="/js/mylibs/helper.js"></script>
+        <!-- end concatenated and minified scripts-->
+
+        <script>
+            // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+            MBP.scaleFix();
     
-    <footer>
+            // Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
+            yepnope({
+                test : Modernizr.mq('(min-width)'),
+                nope : ['/js/libs/respond.min.js']
+            });
+        </script>
+        
+        <script type="text/javascript" src="/js/mpomotimer.js"></script>
 
-    </footer>
-  </div> <!--! end of #container -->
+        <!-- Debugger - remove for production -->
+<!--        <script src="https://getfirebug.com/firebug-lite.js"></script> -->
 
+        <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
+        <script>
+            var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+                g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+                s.parentNode.insertBefore(g,s)}(document,"script"));
+        </script>
 
-  <!-- JavaScript at the bottom for fast page loading -->
-
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
-  <script>window.jQuery || document.write("<script src='js/jquery-1.6.1.min.js'>\x3C/script>")</script>
-  
-  <!-- scripts concatenated and minified via ant build script -->
-  <script src="js/mylibs/helper.js"></script>
-  <!-- end concatenated and minified scripts-->
-  
-  <script>
-    // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
-    MBP.scaleFix();
-    
-    // Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
-    yepnope({
-      test : Modernizr.mq('(min-width)'),
-      nope : ['js/libs/respond.min.js']
-    });
-  </script>
-  
-  <!-- Debugger - remove for production -->
-  <!-- <script src="https://getfirebug.com/firebug-lite.js"></script> -->
-  
-  <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
-  <script>
-    var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-    s.parentNode.insertBefore(g,s)}(document,"script"));
-  </script>
-
-</body>
+    </body>
 </html>
