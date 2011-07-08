@@ -160,18 +160,6 @@ function pomotimer(pomodoro, corto, largo){
         this.dosPuntos('separador');
     }
     
-    this.doSimpleNotification = function(img, titulo, body){
-        if (window.webkitNotifications) {
-            if(window.webkitNotifications.checkPermission()==0){
-                var notificacion = window.webkitNotifications.createNotification(img, titulo, body);
-                notificacion.show();
-                setTimeout(function(){
-                    notificacion.cancel();
-                }, '10000');
-            }
-        }
-    }
-    
     this.pomodoro = function(){
         if(this.encendido){
             if(this.segpomodoro > 0){
@@ -189,12 +177,9 @@ function pomotimer(pomodoro, corto, largo){
                 if(this.espomodoro){                   
                     $('#start').html("Detener descanso");
                     if(this.nodescanso < 3){
-                        numero = (this.shortrest == 1)?'':'s';
-                        this.doSimpleNotification('/img/logo.png','¡Fin del pomodoro!', 'Tómate '+ this.shortrest +' minuto'+ numero +'. Te lo mereces.');
                         this.nodescanso++;
                         this.segpomodoro = this.shortrest * 60;
                     }else{
-                        this.doSimpleNotification('/img/logo.png','¡Fin del pomodoro!', 'Tómate '+ this.shortrest +' minuto'+ numero +'. Te lo mereces.');
                         this.nodescanso=0;
                         this.segpomodoro = this.longrest * 60;
                     }
@@ -203,7 +188,6 @@ function pomotimer(pomodoro, corto, largo){
                     this.dosPuntos('separador');
                     this.pomodoro();
                 }else{
-                    this.doSimpleNotification('/img/logo.png','¡Fin del descanso!', '¿Listo para comenzar un nuevo pomodoro?');
                     $('#start').html("Iniciar Pomodoro");
                     $('#start').removeClass('red').addClass('green');
                     this.encendido = false;
@@ -263,6 +247,7 @@ $(document).ready(function() {
     var click;
                 
     if (Modernizr.localstorage) {
+//        TODO: Cambiar esto para el movil
         minpomodoro = (localStorage['appomodoro.largopom'])?localStorage['appomodoro.largopom']:minpomodoro;
         descorto = (localStorage['appomodoro.shortrest'])?localStorage['appomodoro.shortrest']:descorto;
         deslargo = (localStorage['appomodoro.longrest'])?localStorage['appomodoro.longrest']:deslargo;
@@ -279,7 +264,6 @@ $(document).ready(function() {
         }
     }
                 
-    var wtf = false;
     var relojito = new pomotimer(minpomodoro,descorto,deslargo);
                 
     //checamos por soporte de canvas
@@ -293,28 +277,11 @@ $(document).ready(function() {
         alert("Tu navegador no soporta Canvas! D:");
     //TODO: Manejar esto menos gachamente.
     }
-    //checamos por soporte de notifications
-    if (window.webkitNotifications) {
-        $('#allowNotifications').live('click',function(){
-            window.webkitNotifications.requestPermission(function(){
-                $('#notifications').html("Notificaciones de escritorio activadas.");
-            });
-            return false;
-        });
-        //                    $('#denyNotifications').live('click',function(){
-        //Aqui ira como quitar el permiso cuando sepa si hay una funcion que lo haga o siquiera si es posible
-        //                    });
-
-        if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
-            $('#configul').prepend("<li id='notifications'>Notificaciones de escritorio activadas.</li>");
-        } else {
-            $('#configul').prepend("<li id='notifications'><a href='#' id='allowNotifications'>Activar notificaciones de escritorio</a></li>");
-        }
-    }
                 
     $('#formita').submit(function(){
         return false;
     });
+//    TODO: Cambiar esto para movil si es que es necesario.
     $('#configul input').bind("change blur keyup mouseup", function() {
         id = $(this).attr('id');
         var minutos = $(this).val();
@@ -352,43 +319,11 @@ $(document).ready(function() {
     {
         relojito.f5reloj();
     });
-
-    $('#wtf').click(function(){
-        if(!click){
-            click = true;
-            if(!wtf){
-                $('#wtf>h1').animate({
-                    fontSize: "2em"
-                },300);
-                $('#wtf').animate({
-                    width: 500
-                },500,function(){
-                    $('#wtf').animate({
-                        height: 200
-                    },500,function(){
-                        $('#wtfexpand').fadeIn('fast',function(){
-                            click = false;
-                        });
-                    });
-                });
-            }else{
-                $('#wtfexpand').fadeOut('fast',function(){
-                    $('#wtf').animate({
-                        height: 40
-                    },500,function(){
-                        $('#wtf>h1').animate({
-                            fontSize: ".8em"
-                        },300);
-                        $('#wtf').animate({
-                            width: 40
-                        },500,function(){
-                            click = false;
-                        });
-                    });
-                });
-            }
-            wtf = !wtf;
-        }
+    $('#config').click(function(){
+        return false;
+    });
+    $('#about').click(function(){
+        return false;
     });
 });
 

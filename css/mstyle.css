@@ -218,16 +218,34 @@ body{
     background: #FFF;
     font-family: tahoma,verdana,arial,sans-serif;
     font-size: 100%;
+    height: 100%
+}
+#tabs{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow:hidden;
+    display: block;
+}
+.tab{
+    width:100%;
+    height:100%;
+    position: relative;
+    top: 0;
+    left: 100%;
+}
+#main{
+    left:0;
 }
 header{
-    background-color: #f5f5f5;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#f5f5f5)); 
-    background-image: -webkit-linear-gradient(top, #fefefe, #f5f5f5); 
-    background-image:    -moz-linear-gradient(top, #fefefe, #f5f5f5); 
-    background-image:     -ms-linear-gradient(top, #fefefe, #f5f5f5); 
-    background-image:      -o-linear-gradient(top, #fefefe, #f5f5f5); 
-    background-image:         linear-gradient(top, #fefefe, #f5f5f5);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#f5f5f5'); 
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#eee)); 
+    background-image: -webkit-linear-gradient(top, #fefefe, #eee); 
+    background-image:    -moz-linear-gradient(top, #fefefe, #eee); 
+    background-image:     -ms-linear-gradient(top, #fefefe, #eee); 
+    background-image:      -o-linear-gradient(top, #fefefe, #eee); 
+    background-image:         linear-gradient(top, #fefefe, #eee);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#eee'); 
     height: 73px;
     padding: 2px;
     border-bottom: 1px solid #AAA;
@@ -236,7 +254,7 @@ header{
 h1.logo{
     /*    display: block;*/
     font-family: 'Cherry Cream Soda', serif;
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: left;
     line-height: 73px;
     color: #173680;
@@ -329,7 +347,7 @@ h1.logo .tomate{
     font-size: 1.5em;
 }
 #links{
-    margin-top: 3em;
+    margin-top: 2em;
 }
 #links li{
     float: left;
@@ -414,6 +432,19 @@ html.localstorage #soporte li.suplocalstorage{
 html.canvas.audio.localstorage #soporte{
     display: none;
 }
+.clear{
+    clear:both;
+}
+
+/*Para el iPhone*/
+@media only screen and (min-width: 400px) {
+    h1.logo{
+        font-size:1.9em;
+    }
+}
+
+
+
 
 /*
  * Media queries for responsive design https://github.com/shichuan/mobile-html5-boilerplate/wiki/The-Style
@@ -421,6 +452,13 @@ html.canvas.audio.localstorage #soporte{
 /* Styles for desktop and large screen ----------- */
 /*styles for 800px and up!*/
 @media only screen and (min-width: 800px) {
+    h1.logo{
+        font-size:2.5em;
+        margin-left:1em;
+    }
+    h1.logo .tomate{
+        margin-right:.5em;
+    }
     #reloj{
         padding: 10px;
         background-color: #333;
