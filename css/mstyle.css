@@ -212,17 +212,27 @@ textarea.contenteditable {-webkit-appearance: none;}
 /* Primary Styles for mobile
    Author:
 */
-
+html, body {
+    height: 100%;
+}
 body{
+    margin:0;
+    padding:0;
     color: #333;
     background: #FFF;
     font-family: tahoma,verdana,arial,sans-serif;
     font-size: 100%;
-    height: 100%
+}
+#container{
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+/*    background-color: #DDD;*/
+    margin: 0 auto;
 }
 #tabs{
     width: 100%;
-    height: 100%;
+    height: 85%;
     position: relative;
     overflow:hidden;
     display: block;
@@ -230,9 +240,14 @@ body{
 .tab{
     width:100%;
     height:100%;
-    position: relative;
+    position: absolute;
     top: 0;
     left: 100%;
+    background: #FFF;
+}
+.tab.active{
+    left:0;
+    z-index:1000;
 }
 #main{
     left:0;
