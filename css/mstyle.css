@@ -227,32 +227,43 @@ body{
     min-height: 100%;
     height: 100%;
     width: 100%;
-/*    background-color: #DDD;*/
+    /*    background-color: #DDD;*/
     margin: 0 auto;
 }
 #tabs{
     width: 100%;
-    height: 85%;
+    height: 100%;
     position: relative;
     overflow:hidden;
     display: block;
 }
 .tab{
+    z-index: 10;
     width:100%;
     height:100%;
     position: absolute;
-    top: 0;
-    left: 100%;
-    background: #FFF;
+    top: 110%;
+    left: 0;
+    background: #EEE;
+    -moz-transition: top 1s ease-out;  /* FF4+ */
+    -o-transition: top 1s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: top 1s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: top 1s ease-out;  /* IE10? */
+    transition: top 1s ease-out;
+
+    -moz-box-shadow: 0px -1px 4px #333; /* FF3.5+ */
+    -webkit-box-shadow: 0px -1px 4px #333; /* Saf3.0+, Chrome */
+    box-shadow: 0px -1px 4px #333; /* Opera 10.5, IE9, Chrome 10+ */
 }
 .tab.active{
-    left:0;
-    z-index:1000;
+    top:0;
+    z-index:500;
 }
 #main{
-    left:0;
+    top:0;
+    background-color:#FFF;
 }
-header{
+header.principal{
     background-color: #eee;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#eee)); 
     background-image: -webkit-linear-gradient(top, #fefefe, #eee); 
@@ -265,6 +276,7 @@ header{
     padding: 2px;
     border-bottom: 1px solid #AAA;
     overflow: hidden;
+    z-index: 10000;
 }
 h1.logo{
     /*    display: block;*/
@@ -391,6 +403,93 @@ a.grid{
 #config span{
     background-position: 0px -70px;
 }
+.barra{
+    clear:both;
+    display:block;
+    width:100%;
+    height: 2em;
+    border-bottom: 1px solid #AAA;
+    background: #eeeeee;
+    background: -moz-linear-gradient(top, #eeeeee 0%, #ffffff 23%, #eeeeee 52%, #dddddd 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(23%,#ffffff), color-stop(52%,#eeeeee), color-stop(100%,#dddddd));
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#ffffff 23%,#eeeeee 52%,#dddddd 100%);
+    background: -o-linear-gradient(top, #eeeeee 0%,#ffffff 23%,#eeeeee 52%,#dddddd 100%);
+    background: -ms-linear-gradient(top, #eeeeee 0%,#ffffff 23%,#eeeeee 52%,#dddddd 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#dddddd',GradientType=0 );
+    background: linear-gradient(top, #eeeeee 0%,#ffffff 23%,#eeeeee 52%,#dddddd 100%);
+
+}
+.barra h1{
+    float: left;
+    text-align: center;
+    display: block;
+    height: 2em;
+    line-height: 2em;
+    margin-left: 5px;
+    color: #000;
+}
+.barra .cerrar{
+    display: block;
+    width: 2em;
+    height: 2em;
+    float: right;
+    background: url('/img/sprite.png') no-repeat 0 -137px;
+    text-indent: -200em;
+}
+.tabContent{
+    padding: 1em;
+    font-size: 1.2em;
+}
+.tabContent b{
+    font-weight:bold;
+}
+.tabContent a:link, .tabContent a:visited{
+    color: #b10a0a;
+    font-weight: bold;
+}
+#configul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+#configul li span{
+    width:100%;
+    background-color: #333;
+    display: block;
+}
+#configul label{
+    width: 100%;
+    display: block;
+}
+#configul input{
+    margin: 0 5px 0 5px;
+    background: #333;
+    color: #FFF;
+    width: 3em;
+    height: 2em;
+    font-size: 1em;
+    text-align: center;
+    border: 0;
+    font-family: 'Rock Salt', serif;
+    display: inline-block;
+    box-shadow: inset 0 0 5px 0 #000;
+    -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px; 
+    border-radius: 5px; 
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    margin-bottom: 5px;
+}
+#configul li{
+    padding: 5px;
+    margin-top: 5px;
+    border-bottom: 1px solid #AAA;
+}
+
+
+
+
+
+
 
 
 

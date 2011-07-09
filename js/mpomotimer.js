@@ -315,14 +315,19 @@ $(document).ready(function() {
             $(this).attr("style","color:#F55;");
         }
     });
-    $(window).resize(function()
-    {
+    $(window).resize(function(){
         relojito.f5reloj();
     });
     $('#config').click(function(){
+        $('#configTab').addClass('active');
         return false;
     });
     $('#about').click(function(){
+        $('#aboutTab').addClass('active');
+        return false;
+    });
+    $('.cerrar').click(function(){
+        $(this).parent().parent().removeClass('active');
         return false;
     });
 });

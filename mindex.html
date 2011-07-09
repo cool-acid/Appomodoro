@@ -48,11 +48,11 @@
     <body>
 
         <div id="container">
-            <header>
+            <header class="principal">
                 <h1 class="logo"><span class="tomate"></span>ap<span class="overlay">p</span><span class="resto">omodoro</span></h1>
             </header>
             <div id="tabs">
-                <div id="main" class="tab" role="main">
+                <section id="main" class="tab" role="main">
                     <section id="noHayJS">
                         <h1>Necesitas tener Javascript activado para usar esta página.</h1>
                     </section>
@@ -91,24 +91,41 @@
                         </ul>
                         <div class="clear"></div>
                     </nav>
-                </div>
-                <div id="configTab" class="tab">
-                    <h1>Configuraciones:</h1>
-                    <ul id="configul">
-                        <li>
-                            <label for="largopom">Duraci&oacute;n del pomodoro:</label>
-                            <input type="number" min ="1" max ="99" id="largopom" name="largopom" value="25"/>minutos
-                        </li>    
-                        <li>
-                            <label for="descorto">Duraci&oacute;n del descanso normal:</label>
-                            <input type="number" min ="1" max ="99" id="descorto" name="descorto" value="5"/>minutos
-                        </li>    
-                        <li>
-                            <label for="deslargo">Duraci&oacute;n del descanso largo:</label>
-                            <input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="20"/>minutos
-                        </li>
-                    </ul>
-                </div>
+                </section>
+                <section id="configTab" class="tab">
+                    <header class="barra">
+                        <h1>Configuraciones:</h1>
+                        <a href="#" class="cerrar">X</a>
+                        <div class="clear"></div>
+                    </header>
+                    <div class="tabContent">
+                        <ul id="configul">
+                            <li>
+                                <label for="largopom">Duraci&oacute;n del pomodoro:</label>
+                                <span><input type="number" min ="1" max ="99" id="largopom" name="largopom" value="25"/></span>
+                            </li>    
+                            <li>
+                                <label for="descorto">Duraci&oacute;n del descanso normal:</label>
+                                <span><input type="number" min ="1" max ="99" id="descorto" name="descorto" value="5"/></span>
+                            </li>    
+                            <li>
+                                <label for="deslargo">Duraci&oacute;n del descanso largo:</label>
+                                <span><input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="20"/></span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section id="aboutTab" class="tab">
+                    <header class="barra">
+                        <h1>¿Qu&eacute; es <b>appomodoro</b>?</h1>
+                        <a href="#" class="cerrar">X</a>
+                    </header>
+                    <div class="tabContent">
+                        <p>Appomodoro es un cron&oacute;metro para aplicar la <b>t&eacute;cnica Pomodoro</b>. Si no sabes de que se trata, ve y lee el <a href="http://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro" title="Articulo de la Wikipedia acerca de la t&eacute;cnica pomodoro">art&iacute;culo de wikipedia.</a></p>
+                        <p>Desarroll&eacute; appomodoro para practicar en mis skills de HTML5 y de App Engine. Si tienes alg&uacute;n comentario o sugerencia, <a href="mailto:coolacid217@gmail.com">escr&iacute;beme un correo.</a></p>
+                        <p>¡Que disfrutes appomodoro!</p>
+                    </div>
+                </section>
             </div>
         </div> <!--! end of #container -->
 
@@ -137,7 +154,7 @@
         <script type="text/javascript" src="/js/mpomotimer.js"></script>
 
         <!-- Debugger - remove for production -->
-<!--                <script src="https://getfirebug.com/firebug-lite.js"></script> -->
+        <!--                <script src="https://getfirebug.com/firebug-lite.js"></script> -->
 
         <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
         <script>
