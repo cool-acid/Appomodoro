@@ -65,16 +65,16 @@ function pomotimer(pomodoro, corto, largo){
     this.dibujaNumero = function (valor, donde){
         //BCD
         var deco = [[1,1,1,1,1,1,0],
-        [0,1,1,0,0,0,0],
-        [1,1,0,1,1,0,1],
-        [1,1,1,1,0,0,1],
-        [0,1,1,0,0,1,1],
-        [1,0,1,1,0,1,1],
-        [1,0,1,1,1,1,1],
-        [1,1,1,0,0,0,0],
-        [1,1,1,1,1,1,1],
-        [1,1,1,0,0,1,1],
-        [1,1,1,1,1,1,0]];
+            [0,1,1,0,0,0,0],
+            [1,1,0,1,1,0,1],
+            [1,1,1,1,0,0,1],
+            [0,1,1,0,0,1,1],
+            [1,0,1,1,0,1,1],
+            [1,0,1,1,1,1,1],
+            [1,1,1,0,0,0,0],
+            [1,1,1,1,1,1,1],
+            [1,1,1,0,0,1,1],
+            [1,1,1,1,1,1,0]];
         var numero = deco[valor];
         var canvas = document.getElementById(donde);
         
@@ -247,7 +247,7 @@ $(document).ready(function() {
     var click;
                 
     if (Modernizr.localstorage) {
-//        TODO: Cambiar esto para el movil
+        //        TODO: Cambiar esto para el movil
         minpomodoro = (localStorage['appomodoro.largopom'])?localStorage['appomodoro.largopom']:minpomodoro;
         descorto = (localStorage['appomodoro.shortrest'])?localStorage['appomodoro.shortrest']:descorto;
         deslargo = (localStorage['appomodoro.longrest'])?localStorage['appomodoro.longrest']:deslargo;
@@ -275,13 +275,13 @@ $(document).ready(function() {
         });
     }else{
         alert("Tu navegador no soporta Canvas! D:");
-    //TODO: Manejar esto menos gachamente.
+        //TODO: Manejar esto menos gachamente.
     }
                 
     $('#formita').submit(function(){
         return false;
     });
-//    TODO: Cambiar esto para movil si es que es necesario.
+    //    TODO: Cambiar esto para movil si es que es necesario.
     $('#configul input').bind("change blur keyup mouseup", function() {
         id = $(this).attr('id');
         var minutos = $(this).val();
@@ -321,16 +321,38 @@ $(document).ready(function() {
     $('#config').click(function(){
         $('#config').blur();
         $('#configTab').addClass('active');
+        if(Modernizr.history)
+            history.pushState({'tab':'config'}, "Configuracion - appomodoro", "/mobile/config");
         return false;
     });
     $('#about').click(function(){
         $('#about').blur();
         $('#aboutTab').addClass('active');
+        if(Modernizr.history)
+            history.pushState({'tab':'about'}, "Acerca de - appomodoro", "/mobile/about");
         return false;
     });
     $('.cerrar').click(function(){
         $(this).parent().parent().removeClass('active');
+        if(Modernizr.history)
+            history.pushState({'tab':'about'}, "Acerca de - appomodoro", "/mobile");
         return false;
+    });
+    window.addEventListener("popstate", function(e) {
+        switch(location.pathname){
+            case "/mobile":
+                console.log("Desaparecemos las activas.");
+                $('.active').removeClass("active");
+                break;
+            case "/mobile/config":
+                console.log("Abrimos config.");
+                $('#configTab').addClass('active');
+                break;
+            case "/mobile/about":
+                console.log("Abrimos about.");
+                $('#aboutTab').addClass('active');
+                break;
+        }
     });
 });
 

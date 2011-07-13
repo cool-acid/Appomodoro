@@ -43,7 +43,8 @@ class Desktop(webapp.RequestHandler):
             
 application = webapp.WSGIApplication([
     ('/', MainPage),
-    ('/mobile', Mobile),
+    (r'^/mobile/.*', Mobile),
+    (r'^/mobile$', Mobile),
     ('/desktop', Desktop)
     ], debug=True)
 
