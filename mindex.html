@@ -43,6 +43,7 @@
 
         <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
         <script src="/js/libs/modernizr-custom.js"></script>
+        <script src="/js/initaudioflash.js"></script>
     </head>
 
     <body>
@@ -90,27 +91,28 @@
                             <li><a href="#" class="grid" id="about"><span></span>Acerca de</a></li>
                         </ul>
                         <div class="clear"></div>
+                        <a href="/desktop" id="desktop">Versi&oacute;n Desktop</a>
                     </nav>
                 </section>
                 <section id="configTab" class="tab">
                     <header class="barra">
-                        <h1>Configuraciones:</h1>
+                        <h1>Configuraciones</h1>
                         <a href="#" class="cerrar">X</a>
                         <div class="clear"></div>
                     </header>
-                    <div class="tabContent">
+                    <div>
                         <ul id="configul">
                             <li>
                                 <label for="largopom">Duraci&oacute;n del pomodoro:</label>
-                                <span><input type="number" min ="1" max ="99" id="largopom" name="largopom" value="25"/></span>
+                                <input type="number" min ="1" max ="99" id="largopom" name="largopom" value="25"/>
                             </li>    
                             <li>
                                 <label for="descorto">Duraci&oacute;n del descanso normal:</label>
-                                <span><input type="number" min ="1" max ="99" id="descorto" name="descorto" value="5"/></span>
+                                <input type="number" min ="1" max ="99" id="descorto" name="descorto" value="5"/>
                             </li>    
                             <li>
                                 <label for="deslargo">Duraci&oacute;n del descanso largo:</label>
-                                <span><input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="20"/></span>
+                                <input type="number"  min ="1" max ="99" id="deslargo" name="deslargo" value="20"/>
                             </li>
                         </ul>
                     </div>
@@ -121,9 +123,10 @@
                         <a href="#" class="cerrar">X</a>
                     </header>
                     <div class="tabContent">
-                        <p>Appomodoro es un cron&oacute;metro para aplicar la <b>t&eacute;cnica Pomodoro</b>. Si no sabes de que se trata, ve y lee el <a href="http://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro" title="Articulo de la Wikipedia acerca de la t&eacute;cnica pomodoro">art&iacute;culo de wikipedia.</a></p>
-                        <p>Desarroll&eacute; appomodoro para practicar en mis skills de HTML5 y de App Engine. Si tienes alg&uacute;n comentario o sugerencia, <a href="mailto:coolacid217@gmail.com">escr&iacute;beme un correo.</a></p>
-                        <p>¡Que disfrutes appomodoro!</p>
+                        <p><span class="trademark">ap<span class="overlay">p</span><span class="resto">omodoro</span></span> es un cron&oacute;metro para aplicar la <b>t&eacute;cnica Pomodoro</b>. Si no sabes de que se trata, ve y lee el <a href="http://es.wikipedia.org/wiki/T%C3%A9cnica_Pomodoro" title="Articulo de la Wikipedia acerca de la t&eacute;cnica pomodoro">art&iacute;culo de wikipedia.</a></p>
+                        <p>¡Que disfrutes <span class="trademark">ap<span class="overlay">p</span><span class="resto">omodoro</span></span>!</p>
+                        <p>Si tienes alg&uacute;n comentario o sugerencia, <a href="mailto:coolacid217@gmail.com">escr&iacute;beme un correo.</a></p>
+                        <p>Creado por <b>Cool Acid </b>un día que quería aprender HTML 5 y App Engine y no tenía nada que hacer.</p>
                     </div>
                 </section>
             </div>

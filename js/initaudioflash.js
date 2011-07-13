@@ -15,7 +15,8 @@ function getFlashObject()
 }
 function play()
 {
-    console.log('Alarma (flash)')
+    console.log('Alarma (flash)');
+    console.log(getFlashObject());
     getFlashObject().SetVariable("method:setUrl", "/sounds/alarm.mp3");
     getFlashObject().SetVariable("method:play", "");
     getFlashObject().SetVariable("enabled", "true");

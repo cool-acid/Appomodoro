@@ -227,7 +227,6 @@ body{
     min-height: 100%;
     height: 100%;
     width: 100%;
-    /*    background-color: #DDD;*/
     margin: 0 auto;
 }
 #tabs{
@@ -286,10 +285,15 @@ h1.logo{
     line-height: 73px;
     color: #173680;
 }
-h1.logo .overlay{
+.trademark{
+    color: #173680;
+    font-family: 'Cherry Cream Soda', serif;
+    font-weight:bold;
+}
+.overlay{
     color: #275412;
 }
-h1.logo .resto{
+.resto{
     color: #b10a0a;
 }
 h1.logo .tomate{
@@ -427,6 +431,7 @@ a.grid{
     line-height: 2em;
     margin-left: 5px;
     color: #000;
+    font-size: 1.2em;
 }
 .barra .cerrar{
     display: block;
@@ -438,7 +443,7 @@ a.grid{
 }
 .tabContent{
     padding: 1em;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .tabContent b{
     font-weight:bold;
@@ -447,42 +452,49 @@ a.grid{
     color: #b10a0a;
     font-weight: bold;
 }
+.tabContent p{
+    margin-bottom: .5em;
+}
 #configul{
     list-style: none;
     margin:0;
     padding:0;
 }
-#configul li span{
-    width:100%;
-    background-color: #333;
-    display: block;
+#configul li{
+    padding: 5px 0;
+    margin-top: 5px;
+/*    border-bottom: 1px solid #AAA;*/
 }
 #configul label{
     width: 100%;
     display: block;
+    font-size: 1.2em;
 }
 #configul input{
-    margin: 0 5px 0 5px;
     background: #333;
     color: #FFF;
-    width: 3em;
-    height: 2em;
-    font-size: 1em;
+    width: 100%;
+    font-size: 2em;
     text-align: center;
     border: 0;
     font-family: 'Rock Salt', serif;
-    display: inline-block;
+    display: inline-block;    
+    margin:0;
+    padding:.3em 0;
     box-shadow: inset 0 0 5px 0 #000;
+    /*
     -moz-border-radius: 5px; 
     -webkit-border-radius: 5px; 
     border-radius: 5px; 
-    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+    -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;*/
     margin-bottom: 5px;
 }
-#configul li{
-    padding: 5px;
-    margin-top: 5px;
-    border-bottom: 1px solid #AAA;
+#desktop{
+    text-align:center;
+    color:#b10a0a;
+    display:block;
+    font-weight:bold;
+    text-decoration:none;
 }
 
 
@@ -511,9 +523,6 @@ html.no-canvas #links #config{
 }
 html.no-canvas #links li{
     width: 100%;
-}
-#audio{
-    display: none;
 }
 #soporte{
     font-size: .8em;

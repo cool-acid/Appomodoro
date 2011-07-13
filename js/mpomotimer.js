@@ -319,10 +319,12 @@ $(document).ready(function() {
         relojito.f5reloj();
     });
     $('#config').click(function(){
+        $('#config').blur();
         $('#configTab').addClass('active');
         return false;
     });
     $('#about').click(function(){
+        $('#about').blur();
         $('#aboutTab').addClass('active');
         return false;
     });

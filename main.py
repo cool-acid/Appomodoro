@@ -30,19 +30,25 @@ class MainPage(webapp.RequestHandler):
             else:
                 self.response.out.write(template.render(path, None))
                 
-class Prueba(webapp.RequestHandler):
+class Mobile(webapp.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'mindex.html')
 #        path = os.path.join(os.path.dirname(__file__), 'pruebaaudio.html')
         self.response.out.write(template.render(path, None))
+
+class Desktop(webapp.RequestHandler):
+    def get(self):
+        path = os.path.join(os.path.dirname(__file__), 'index.html')
+        self.response.out.write(template.render(path, None))
             
 application = webapp.WSGIApplication([
     ('/', MainPage),
-    ('/mobile', Prueba)
+    ('/mobile', Mobile),
+    ('/desktop', Desktop)
     ], debug=True)
 
 def main():
   run_wsgi_app(application)
 
-if __name__ == '__main__':
+if __name__ == '__main__':  
   main()
