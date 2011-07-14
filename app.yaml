@@ -4,6 +4,8 @@ runtime: python
 api_version: 1
 
 handlers:
+- url: /czz/.*
+  script: czz.py
 - url: /favicon\.ico
   static_files: img/favicon.ico
   upload: img/favicon\.ico
