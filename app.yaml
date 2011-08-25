@@ -1,7 +1,11 @@
 application: appomodoro
-version: 2
+version: dev
 runtime: python
 api_version: 1
+
+inbound_services:
+- xmpp_message
+
 
 handlers:
 - url: /czz/.*
@@ -30,6 +34,10 @@ handlers:
   
 - url: /flash
   static_dir: flash
+  
+- url: /xmpp.*
+  script: xmpp.py
+  login: required
   
 - url: /.*
   script: main.py

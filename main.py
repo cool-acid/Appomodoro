@@ -40,7 +40,9 @@ class Desktop(webapp.RequestHandler):
     def get(self):
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         self.response.out.write(template.render(path, None))
-            
+
+       
+        
 application = webapp.WSGIApplication([
     ('/', MainPage),
     (r'^/mobile/.*', Mobile),

@@ -1,0 +1,77 @@
+<!doctype html>
+<!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
+<!-- Appcache Facts http://appcachefacts.info/ -->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7" manifest="default.appcache?v=1"> <![endif]-->
+<!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" manifest="default.appcache?v=1"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>appomodoro</title>
+        <meta name="description" content="Un contador para pomodoro hecho en html 5 y canvas.">
+        <meta name="author" content="Cool Acid">
+
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
+        <link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-startup-image" href="img/l/splash.png">
+
+        <meta http-equiv="cleartype" content="on">
+
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="/czz/mstyle,xmpp.css?v=1">
+        <!-- Google Web Fonts -->
+        <link  href="http://fonts.googleapis.com/css?family=Cherry+Cream+Soda:regular&v1" rel="stylesheet">
+        <script src="/js/libs/modernizr-custom.js"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <header class="principal">
+                <h1 class="logo"><span class="tomate"></span>ap<span class="overlay">p</span><span class="resto">omodoro</span></h1>
+            </header>
+            <div id="tabs">
+                <section id="main" role="main">
+                    <section id="noHayJS">
+                        <h1>Necesitas tener Javascript activado para usar esta página.</h1>
+                    </section>
+                    <h1>Soporte XMPP</h1>
+                    <p>Siguiendo con este experimento de App Engine, ahora puedes iniciar pomodoros desde gTalk, y ser notificado de cuando tu pomodoro y tu descanso se terminen.</p>
+                    <p>Para activar esto solo tienes que seguir los siguientes pasos:</p>
+                    <ol id="steps">
+                        <li>Haz click <a href="#" id="sendInvitation">aqui</a> para enviar una invitaci&oacute;n a chatear.</li>
+                        <li>Acepta a aquivaelcontacto@appomodoro.appspot.com en tu cliente de gmail.</li>
+                        <li>Listo! Ya puedes iniciar un pomodoro desde gtalk: Solo envia INICIAR al bot. El te responder&aacute; inmediatamente y te volver&aacute; a hablar cuando tu pomodoro haya terminado.</li>
+                    </ol>
+                </section>
+            </div>
+        </div> <!--! end of #container -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+        <script>window.jQuery || document.write("<script src='/js/jquery-1.6.1.min.js'>\x3C/script>")</script>
+        <script src="/js/mylibs/helper.js"></script>
+        <script>
+            MBP.scaleFix();
+            yepnope({
+                test : Modernizr.mq('(min-width)'),
+                nope : ['/js/libs/respond.min.js']
+            });
+        </script>
+<!--        <script type="text/javascript" src="/js/mpomotimer.js"></script>-->
+        <script type="text/javascript" src="/js/xmpp.js"></script>
+        <script>
+            var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+                g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+                s.parentNode.insertBefore(g,s)}(document,"script"));
+        </script>
+    </body>
+</html>
