@@ -6,19 +6,30 @@ api_version: 1
 handlers:
 - url: /czz/.*
   script: czz.py
+
+- url: /default\.appcache
+  mime_type: text/cache-manifest
+  static_files: default.appcache
+  upload: default\.appcache
+  
 - url: /favicon\.ico
   static_files: img/favicon.ico
   upload: img/favicon\.ico
+  
 - url: /css
   static_dir: css
+  
 - url: /img
   static_dir: img
+  
 - url: /js
   static_dir: js
+  
 - url: /sounds
   static_dir: sounds
+  
 - url: /flash
   static_dir: flash
+  
 - url: /.*
   script: main.py
-

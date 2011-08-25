@@ -7,41 +7,29 @@
     <head>
         <meta charset="utf-8">
 
-        <title></title>
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <title>appomodoro</title>
+        <meta name="description" content="Un contador para pomodoro hecho en html 5 y canvas.">
+        <meta name="author" content="Cool Acid">
 
-        <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
 
-        <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
-        <!-- For iPhone 4 with high-resolution Retina display: -->
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/h/apple-touch-icon.png">
-        <!-- For first-generation iPad: -->
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/m/apple-touch-icon.png">
-        <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
         <link rel="apple-touch-icon-precomposed" href="/img/l/apple-touch-icon-precomposed.png">
-        <!-- For nokia devices: -->
         <link rel="shortcut icon" href="/img/l/apple-touch-icon.png">
 
-        <!--iOS web app, deletable if not needed -->
-        <!--<meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <link rel="apple-touch-startup-image" href="img/l/splash.png">-->
+        <link rel="apple-touch-startup-image" href="img/l/splash.png">
 
-        <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
-        <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
-
         <!-- Main Stylesheet -->
-        <link rel="stylesheet" href="/css/mstyle.css?v=1">
+        <link rel="stylesheet" href="/czz/mstyle.css?v=1">
         <!-- Google Web Fonts -->
         <link  href="http://fonts.googleapis.com/css?family=Cherry+Cream+Soda:regular&v1" rel="stylesheet">
-
-        <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
         <script src="/js/libs/modernizr-custom.js"></script>
         <script src="/js/initaudioflash.js"></script>
     </head>
@@ -132,40 +120,22 @@
             </div>
         </div> <!--! end of #container -->
 
-
-        <!-- JavaScript at the bottom for fast page loading -->
-
-        <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
         <script>window.jQuery || document.write("<script src='/js/jquery-1.6.1.min.js'>\x3C/script>")</script>
-
-        <!-- scripts concatenated and minified via ant build script -->
         <script src="/js/mylibs/helper.js"></script>
-        <!-- end concatenated and minified scripts-->
-
         <script>
-            // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
             MBP.scaleFix();
-    
-            // Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill
             yepnope({
                 test : Modernizr.mq('(min-width)'),
                 nope : ['/js/libs/respond.min.js']
             });
         </script>
-
         <script type="text/javascript" src="/js/mpomotimer.js"></script>
-
-        <!-- Debugger - remove for production -->
-        <!--                <script src="https://getfirebug.com/firebug-lite.js"></script> -->
-
-        <!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
         <script>
             var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
                 g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
                 s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
-
     </body>
 </html>

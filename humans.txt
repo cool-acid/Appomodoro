@@ -1,43 +1,16 @@
-/* the humans responsible & colophon */
 /* humanstxt.org */
 
+                                                                        888                          
+                                                                        888                          
+         8888b.  88888b.  88888b.   .d88b.  88888b.d88b.   .d88b.   .d88888  .d88b.  888d888 .d88b.  
+            "88b 888 "88b 888 "88b d88""88b 888 "888 "88b d88""88b d88" 888 d88""88b 888P"  d88""88b 
+        .d888888 888  888 888  888 888  888 888  888  888 888  888 888  888 888  888 888    888  888 
+        888  888 888 d88P 888 d88P Y88..88P 888  888  888 Y88..88P Y88b 888 Y88..88P 888    Y88..88P 
+        "Y888888 88888P"  88888P"   "Y88P"  888  888  888  "Y88P"   "Y88888  "Y88P"  888     "Y88P"    v2.0
+                 888      888                                                                        
+                 888      888                                                
+                 888      888                                                DESIGN & CODE: COOL ACID
 
-/* TEAM */
-  <your title>: <your name>
-  Site: 
-  Twitter: 
-  Location: 
-
-/* THANKS */
-  Names (& URL): 
-
-/* SITE */
-  Standards: HTML5, CSS3
-  Components: Modernizr, jQuery
-  Software:
-  
-
-                                    
-                               -o/-                       
-                               +oo//-                     
-                              :ooo+//:                    
-                             -ooooo///-                   
-                             /oooooo//:                   
-                            :ooooooo+//-                  
-                           -+oooooooo///-                 
-           -://////////////+oooooooooo++////////////::    
-            :+ooooooooooooooooooooooooooooooooooooo+:::-  
-              -/+ooooooooooooooooooooooooooooooo+/::////:-
-                -:+oooooooooooooooooooooooooooo/::///////:-
-                  --/+ooooooooooooooooooooo+::://////:-   
-                     -:+ooooooooooooooooo+:://////:--     
-                       /ooooooooooooooooo+//////:-        
-                      -ooooooooooooooooooo////-           
-                      /ooooooooo+oooooooooo//:            
-                     :ooooooo+/::/+oooooooo+//-           
-                    -oooooo/::///////+oooooo///-          
-                    /ooo+::://////:---:/+oooo//:          
-                   -o+/::///////:-      -:/+o+//-         
-                   :-:///////:-            -:/://         
-                     -////:-                 --//:        
-                       --                       -:        
+/*    GRACIAS ESPECIALES    */
+unRob - Porque siempre me robo sus cigarros.
+lasr21 - Porque ser el buen emprendedor que no soy.

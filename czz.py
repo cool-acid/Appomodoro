@@ -20,13 +20,17 @@ class Czz(webapp.RequestHandler):
                 path = os.path.join(os.path.dirname(__file__), 'czz/' + hoja + '.css')
                 titulo = '\n\n/*======== '+ hoja + '.css ========*/\n'
                 try:
-                    with open(path, 'U') as elCSS:
-                        procesado = elCSS.read()
-                        procesado = multispace.sub(' ', procesado)
-                        procesado = separadores.sub(r'\1', procesado)
-                        procesado = comentarios.sub('', procesado)
-                        procesado = procesado.replace("\n", "")
-                        procesado = titulo + procesado
+
+#                    with open(path, 'U') as elCSS:
+                    elCSS = open(path, 'U')
+                    procesado = elCSS.read()
+                    elCSS.close()
+                    procesado = multispace.sub(' ', procesado)
+                    procesado = separadores.sub(r'\1', procesado)
+                    procesado = comentarios.sub('', procesado)
+                    procesado = procesado.replace("\n", "")
+#                        procesado = procesado.replace("}", "}\n")
+                    procesado = titulo + procesado
                     final+=procesado
                     procesado = ''
                 except IOError:
