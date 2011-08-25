@@ -1,5 +1,5 @@
 application: appomodoro
-version: 2
+version: dev
 runtime: python
 api_version: 1
 
@@ -38,6 +38,9 @@ handlers:
 - url: /xmpp.*
   script: xmpp.py
   login: required
+  
+- url: /_ah/xmpp/message/chat/
+  script: incomingXMPP.py
   
 - url: /.*
   script: main.py
