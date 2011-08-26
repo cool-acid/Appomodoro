@@ -6,7 +6,6 @@ api_version: 1
 inbound_services:
 - xmpp_message
 
-
 handlers:
 - url: /czz/.*
   script: czz.py
@@ -38,6 +37,9 @@ handlers:
 - url: /xmpp.*
   script: xmpp.py
   login: required
+  
+- url: /pomodoro
+  script: pomodoro.py
   
 - url: /_ah/xmpp/message/chat/
   script: incomingXMPP.py

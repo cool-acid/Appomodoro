@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-import re, logging
+import re
+import logging
 from google.appengine.api import xmpp
 from google.appengine.ext import webapp
-#from google.appengine.ext.webapp import template
+from google.appengine.api import taskqueue
+from google.appengine.ext import deferred
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 
@@ -27,6 +29,7 @@ class Incoming(webapp.RequestHandler):
                 comando = m.group(1)
                 if comando.lower() == 'iniciar' or comando.lower() == 'start':
                     hiHola = __saludo__ if comando.lower() == 'iniciar' else __greeting__ #Saludo localizado
+                    local = 'es' if comando.lower() == 'iniciar' else 'en'
                     if m.group(2): #Osea que hay argumentos...
                         argumentos = m.group(2).strip()
                         logging.info(argumentos)
@@ -40,6 +43,10 @@ class Incoming(webapp.RequestHandler):
                                     arg2 = int(n.group(2))
                                     descanso = arg2 if (arg2 > 0 and arg2 < 100) else descanso
                     mensaje.reply(hiHola%(pomodoro,descanso))
+                    #Aqui añadimos la task
+                    segundos = pomodoro*60;
+                    taskqueue.add(url='/pomodoro', params={'local':local, 'pomodoro': pomodoro, 'descanso':descanso, 'sender':mensaje.sender}, countdown=segundos)
+                    #TODO: Agregar control de los pomodoros por email y ofrecer la opcion de cancelarlos.
                 else:
                     mensaje.reply('I didn\'t get what you\'re trying to say. Try again!')                    
             else:
