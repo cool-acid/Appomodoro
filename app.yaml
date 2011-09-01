@@ -40,9 +40,15 @@ handlers:
   
 - url: /pomodoro
   script: pomodoro.py
+
+- url: /descanso
+  script: pomodoro.py
   
 - url: /_ah/xmpp/message/chat/
   script: incomingXMPP.py
+  
+- url: /sendmail
+  script: sendMail.py
   
 - url: /.*
   script: main.py
