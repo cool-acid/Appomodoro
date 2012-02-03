@@ -94,7 +94,7 @@ body{
     background: url('/img/bkg.jpg') repeat;
 }
 #rays{
-    background: url('/img/rayitos.png') no-repeat;
+    background: url('/img/rayitos.png') no-repeat top center;
 }
 #viewport{
     width: 960px;
